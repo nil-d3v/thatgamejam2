@@ -5,5 +5,3 @@ if instance_number(oGameController) > 1 {
 
 // Resize Application Surface
 surface_resize(application_surface, 960, 540);
-
-// Unlocked abilities
