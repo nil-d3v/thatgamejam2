@@ -4,8 +4,10 @@ update_status();
 switch (main_player_state) {
 	case MainPlayerState.NORMAL:
 		player_update_movement();
+		player_update_platform_movement()
 		player_update_horizontal_control();
 		player_update_vertical_control();
+		round_speeds();
 		player_update_horizontal_physics();
 		player_update_vertical_physics();
 		player_update_sprite();

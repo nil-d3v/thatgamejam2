@@ -9,6 +9,8 @@ function get_inputs() {
 	// Inputs
 	rightKey = keyboard_check(vk_right) || keyboard_check(ord("D")) || gamepad_button_check(0, gp_padr);
 	leftKey = keyboard_check(vk_left) || keyboard_check(ord("A")) || gamepad_button_check(0, gp_padl);
+	downKey = keyboard_check(vk_down) || keyboard_check(ord("S")) || gamepad_button_check(0, gp_padd);
+	downKeyPressed = keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S")) || gamepad_button_check_pressed(0, gp_padd);
 	jumpKey = keyboard_check(vk_up) || keyboard_check(ord("W")) || keyboard_check(vk_space) || gamepad_button_check(0, gp_face1);
 	jumpKeyPressed = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W")) || keyboard_check_pressed(vk_space) || gamepad_button_check_pressed(0, gp_face1);
 	actionKey = keyboard_check(vk_shift) || keyboard_check(ord("Z")) || gamepad_button_check(0, gp_face2);
@@ -41,6 +43,7 @@ function get_inputs() {
 function set_on_ground(_val) {
 	if _val == true {
 		if !onGround {
+			jumpAnimationLandingTimer = jumpAnimationLandingDuration;
 			xscale = 1.5;
 			yscale = 0.5;
 		}
@@ -49,42 +52,22 @@ function set_on_ground(_val) {
 	} else {
 		onGround = false;
 		coyoteHangTimer = 0;
+		groundPlatform = noone;
 	}
 }
 
 function is_on_semisolid() {
-	var on_platform = collision_rectangle(
-		bbox_left,
-		bbox_bottom + 1,
-		bbox_right,
-		bbox_bottom + 1,
-		oSemiSolid,
-		false,
-		true
-	);
-
+	var on_platform = collision_rectangle(bbox_left, bbox_bottom + 1, bbox_right, bbox_bottom + 1, oSemiSolid, false, true);
 	if (!on_platform) {
 	    return noone;
 	}
-
-	var inside_platform = collision_rectangle(
-	    bbox_left,
-	    bbox_bottom,
-	    bbox_right,
-	    bbox_bottom,
-	    oSemiSolid,
-	    false,
-	    true
-	);
-
+	var inside_platform = collision_rectangle(bbox_left,bbox_bottom, bbox_right, bbox_bottom, oSemiSolid, false, true);
 	if (!inside_platform) {
 	    return on_platform;
 	}
-
 	if (on_platform == inside_platform) {
 	    return noone;
 	}
-
 	return on_platform;
 }
 
@@ -101,6 +84,33 @@ function player_update_movement() {
 		} else {
 			movement_player_state = MovementPlayerState.CLASSIC;
 		}
+	}
+}
+
+function player_update_platform_movement() {
+	if !instance_exists(groundPlatform) {
+		return;
+	}
+	var _platform = groundPlatform;
+	move_x(_platform.xspd);
+	if (_platform.yspd < 0 && place_meeting(x, y + _platform.yspd, tileset_id)) {
+		var _subpixel = 0.25;
+		while (place_meeting(x, y + _platform.yspd, tileset_id)) {
+			y += _subpixel;
+		}
+		while (place_meeting(x, y, tileset_id)) {
+			y += _subpixel;
+		}
+		y = round(y);
+		yspd = 0;
+		yspdInt = 0;
+		yspdFrac = 0;
+		jumpHoldTimer = 0;
+		set_on_ground(false);
+		return;
+	}
+	if !move_y(_platform.yspd) {
+		groundPlatform = noone;
 	}
 }
 
@@ -152,9 +162,8 @@ function player_update_vertical_control() {
 			} else {
 				yspd += fastGravity;
 			}
-			set_on_ground(false);
 		}
-
+		
 		if onGround {
 			jumpCount = 0;
 			jumpHoldTimer = 0;
@@ -172,6 +181,9 @@ function player_update_vertical_control() {
 			jumpCount++;
 			jumpHoldTimer = jumpHoldFrames[jumpCount - 1];
 			set_on_ground(false);
+			if jumpCount <= 1 {
+				jumpAnimationTakeoffTimer = jumpAnimationTakeoffDuration;
+			}
 		}
 
 		if !jumpKey {
@@ -181,6 +193,15 @@ function player_update_vertical_control() {
 			yspd = jspd[jumpCount - 1];
 			jumpHoldTimer--;
 		}
+		
+		if onGround && downKeyPressed && instance_exists(groundPlatform) {
+			dropThroughPlatform = groundPlatform;
+			groundPlatform = noone;
+			onGround = false;
+			y += 1;
+			yspd = 1;
+			yspdFrac = 0;
+		}
 	
 		var _currentTermVel = (movement_player_state == MovementPlayerState.GLIDING) ? gliderTermVel : normalTermVel;
 		if yspd > _currentTermVel {
@@ -189,35 +210,139 @@ function player_update_vertical_control() {
 	}
 }
 
-function player_update_horizontal_physics() {
-	var _subPixel = 0.5;
-	if place_meeting(x + xspd, y, tileset_id) {
-		var _pixelCheck = _subPixel * sign(xspd);
-		while !place_meeting(x + _pixelCheck, y, tileset_id) {
-			x += _pixelCheck
+function round_speeds() {
+	xspdFrac += xspd;
+	xspdInt = floor(xspdFrac);
+	xspdFrac -= xspdInt;
+	yspdFrac += yspd;
+	yspdInt = floor(yspdFrac);
+	yspdFrac -= yspdInt;
+}
+
+function move_x(_amount) {
+	var _remaining = abs(_amount);
+	var _dir = sign(_amount);
+	var _step_size = 0.2;
+	var _success = true;
+
+	while (_remaining > 0.0001) {
+		var _step = min(_step_size, _remaining);
+		var _move = _dir * _step;
+		if (place_meeting(x + _move, y, tileset_id)) {
+			_success = false;
+			break;
 		}
-		xspd = 0;
+		x += _move;
+		_remaining -= _step;
 	}
-	x += xspd;	
+	return _success;
+}
+
+function move_y(_amount) {
+	var _remaining = abs(_amount);
+	var _dir = sign(_amount);
+	var _step_size = 0.2;
+	var _success = true;
+
+	while (_remaining > 0.0001) {
+		var _step = min(_step_size, _remaining);
+		var _move = _dir * _step;
+		var _old_bottom = bbox_bottom;
+		var _next_y = y + _move;
+		if (place_meeting(x, _next_y, tileset_id)) {
+			_success = false;
+			break;
+		}
+		if (_dir > 0) {
+			var _count = instance_number(oSemiSolid);
+
+			for (var i = 0; i < _count; i++) {
+				var _platform = instance_find(oSemiSolid, i);
+				if (!instance_exists(_platform)) {
+					continue;
+				}
+				if (_platform == dropThroughPlatform) {
+					continue;
+				}
+				var _overlap_x = bbox_right > _platform.bbox_left && bbox_left < _platform.bbox_right;
+				var _crossing_top = _old_bottom <= _platform.bbox_top && _old_bottom + _move >= _platform.bbox_top;
+				if (_overlap_x && _crossing_top) {
+					y += _platform.bbox_top - _old_bottom;
+					groundPlatform = _platform;
+					_success = false;
+					return _success;
+				}
+			}
+		}
+		y = _next_y;
+		_remaining -= _step;
+	}
+	return _success;
+}
+
+function player_update_horizontal_physics() {
+	if !move_x(xspdInt) {
+		xspd = 0;
+		xspdFrac = 0;
+		if movement_player_state == MovementPlayerState.DASHING {
+			movement_player_state = MovementPlayerState.CLASSIC;
+			dashCooldownTimer = dashCooldownDuration;
+		}
+	}
 }
 
 function player_update_vertical_physics() {
-	var _subPixel = 0.5;
-	if place_meeting(x, y + yspd, tileset_id) {
-		var _pixelCheck = _subPixel * sign(yspd);
-		while !place_meeting(x, y + _pixelCheck, tileset_id) {
-			y += _pixelCheck
-		}
-		if yspd < 0 {
-			jumpHoldTimer = 0;
-		}
-		yspd = 0;
+	var _previous_bottom = bbox_bottom;
+    if !move_y(yspdInt) {
+        if (yspdInt < 0) {
+            jumpHoldTimer = 0;
+        }
+        if (yspdInt > 0) {
+            set_on_ground(true);
+        }
+        yspd = 0;
+        yspdFrac = 0;
+    }
+    if (yspd >= 0) {
+        var _count = instance_number(oSemiSolid);
+        for (var i = 0; i < _count; i++) {
+            var _p = instance_find(oSemiSolid, i);
+            if (!instance_exists(_p)) {
+                continue;
+            }
+            var _prev_top = _p.platform_prev_y + (_p.bbox_top - _p.y);
+            var _prev_left = _p.platform_prev_x + (_p.bbox_left - _p.x);
+            var _prev_right = _p.platform_prev_x + (_p.bbox_right - _p.x);
+            if (_p != dropThroughPlatform && bbox_right > min(_prev_left, _p.bbox_left) && bbox_left < max(_prev_right, _p.bbox_right) && _previous_bottom <= _prev_top && bbox_bottom >= _p.bbox_top - 1) {
+                y += _p.bbox_top - bbox_bottom;
+                groundPlatform = _p;
+                yspd = 0;
+                yspdInt = 0;
+                yspdFrac = 0;
+                set_on_ground(true);
+                break;
+            }
+        }
+    }
+    if yspd >= 0 {
+        if place_meeting(x, y + 1, tileset_id) {
+            groundPlatform = noone;
+            set_on_ground(true);
+        } else {
+            var _platform = collision_rectangle(bbox_left, bbox_bottom, bbox_right, bbox_bottom + 1, oSemiSolid, false, true);
+            if _platform != noone && _platform != dropThroughPlatform && bbox_bottom <= _platform.bbox_top {
+                groundPlatform = _platform;
+                set_on_ground(true);
+            }
+        }
+    }
+	if (instance_exists(dropThroughPlatform)) {
+	    if (bbox_top > dropThroughPlatform.bbox_bottom) {
+	        dropThroughPlatform = noone;
+	    }
+	} else {
+	    dropThroughPlatform = noone;
 	}
-
-	if yspd >= 0 && place_meeting(x, y + 1, tileset_id) {
-		set_on_ground(true);
-	}
-	y += yspd;
 }
 
 function player_update_sprite() {
@@ -232,17 +357,27 @@ function player_update_sprite() {
 			} else {
 				sprite_index = sPlayerIdle;
 			}
+			if jumpAnimationLandingTimer > 0 {
+				sprite_index = sPlayerJump;
+				image_index = 7;
+			}
 		} else {
 			sprite_index = sPlayerJump;
-			if yspd <= 3 && yspd >= -3 {
-				image_index += 0.25;
+			if jumpAnimationTakeoffTimer > 0 {
+				image_index = 0;
+			} else if yspd <= 2 && yspd >= -2 {
+				image_index += 0.5;
 				if image_index >= 6 {
 				    image_index = 2;
 				}
-			} else {
+			} else if yspd < 0 {
 				image_index = 1;
+			} else {
+				image_index = 6;
 			}
 		}
+		jumpAnimationTakeoffTimer--;
+		jumpAnimationLandingTimer--;
 	} else if movement_player_state == MovementPlayerState.GLIDING {
 		sprite_index = sPlayerGlide;
 	} else {
@@ -268,7 +403,7 @@ enum MovementPlayerState {
 main_player_state = MainPlayerState.NORMAL;
 movement_player_state = MovementPlayerState.CLASSIC;
 
-// Setup Inputs
+// Inputs
 rightKey = false;
 leftKey = false;
 jumpKey = false;
@@ -295,6 +430,12 @@ sprintSpeed = 4;
 face = 1;
 xspd = 0;
 yspd = 0;
+xspdInt = 0;
+yspdInt = 0;
+xspdFrac = 0;
+yspdFrac = 0;
+groundPlatform = noone;
+dropThroughPlatform = noone;
 
 // Jumping
 normalGravity = 0.3;
@@ -326,3 +467,9 @@ dashDuration = 30;
 dashTimer = 0;
 dashCooldownDuration = 60;
 dashCooldownTimer = 0;
+
+// Sprites
+jumpAnimationTakeoffTimer = 0;
+jumpAnimationLandingTimer = 0;
+jumpAnimationTakeoffDuration = 3;
+jumpAnimationLandingDuration = 3;

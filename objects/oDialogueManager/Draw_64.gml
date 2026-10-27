@@ -10,7 +10,7 @@ if (dialogue_active) {
 	dialogue_height = _layout.height + bubble_padding * 2 + bubble_arrow_height;
 
 	// Bubble
-	draw_sprite_ext(sDialogueBubble, 0, dialogue_x, dialogue_y, dialogue_width / sprite_get_width(sDialogueBubble), dialogue_height / sprite_get_height(sDialogueBubble), 0, c_white, 1);
+	draw_sprite_ext(sDialogueBubbleSpeech, 0, dialogue_x, dialogue_y, dialogue_width / sprite_get_width(sDialogueBubbleSpeech), dialogue_height / sprite_get_height(sDialogueBubbleSpeech), 0, c_white, 1);
 
 	// Text
 	draw_set_color(c_black);
