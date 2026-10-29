@@ -8,8 +8,8 @@
   "name":"oSemiSolid",
   "overriddenProperties":[],
   "parent":{
-    "name":"Environment",
-    "path":"folders/Environment.yy",
+    "name":"Platforms",
+    "path":"folders/Environment/Platforms.yy",
   },
   "parentObjectId":null,
   "persistent":false,

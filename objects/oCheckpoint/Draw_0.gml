@@ -1,0 +1,1 @@
+draw_sprite(sCheckpoint, is_enabled ? 1 : 0, x, y);

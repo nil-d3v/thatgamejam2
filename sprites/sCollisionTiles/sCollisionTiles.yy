@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Environment",
-    "path":"folders/Environment.yy",
+    "name":"Platforms",
+    "path":"folders/Environment/Platforms.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -1,6 +1,11 @@
+if instance_number(oDialogueManager) > 1 {
+	instance_destroy();
+}
+
 // Preset Info
 bubble_arrow_height = 10;
 bubble_padding = 8;
+namebox_padding = 4;
 
 // Dialogue Info
 dialogue_active = false;
@@ -10,6 +15,8 @@ dialogue_y = 0;
 dialogue_max_width = 0;
 dialogue_width = 0;
 dialogue_height = 0;
+dialogue_style = 0; // 0 : speech / 1 : thought
+dialogue_callback = undefined;
 
 dialogue_character_name = "";
 dialogue_text_array = [];
@@ -18,11 +25,13 @@ dialogue_index = 0;
 visible_chars = 0;
 text_speed = 0.5;
 
-function start_dialogue(_xpos, _ypos, _max_width, _character_name, _text_array) {
+function start_dialogue(_xpos, _ypos, _max_width, _style, _character_name, _text_array, _callback) {
 	dialogue_x = _xpos;
 	dialogue_y = _ypos;
 	dialogue_max_width = _max_width;
 	dialogue_character_name = _character_name;
+	dialogue_style = _style;
+	dialogue_callback = _callback;
 
 	dialogue_text_array = _text_array;
 	dialogue_index = 0;

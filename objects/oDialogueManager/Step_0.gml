@@ -10,6 +10,7 @@ if dialogue_active {
 			if dialogue_index >= array_length(dialogue_text_array) {
 				dialogue_active = false;
 				oPlayer.main_player_state = MainPlayerState.NORMAL;
+				dialogue_callback();
 			} else {
 				visible_chars = 0;
 				set_dialogue_dimensions();

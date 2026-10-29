@@ -1,5 +1,9 @@
 depth = -10;
 
+if instance_number(oPlayer) > 1 {
+	instance_destroy();
+}
+
 // Functions
 function update_status() {
 	jumpMax = global.game_data.abilities.double_jump ? 2 : 1;
@@ -70,16 +74,41 @@ function is_on_semisolid() {
 	}
 	return on_platform;
 }
+	
+function init_tileset() {
+	var _tile_layer_id = layer_get_id("CollisionTiles");
+	tileset_id = layer_tilemap_get_id(_tile_layer_id);
+}
+	
+function start_subarea_transition() {
+	main_player_state = MainPlayerState.TRANSITION;
+	movement_player_state = MovementPlayerState.CLASSIC;
+	// Reset data
+	moveDir = 0;
+	xspd = 0;
+	yspd = 0;
+	xspdInt = 0;
+	yspdInt = 0;
+	xspdFrac = 0;
+	yspdFrac = 0;
+	groundPlatform = noone;
+	dropThroughPlatform = noone;
+	coyoteHangTimer = 0;
+	coyoteJumpTimer = 0;
+	dashDirection = 0;
+	dashTimer = 0;
+	dashCooldownTimer = 0;
+}
 
 // Player Updating
 function player_update_movement() {
 	dashCooldownTimer--;
-	if movement_player_state != MovementPlayerState.DASHING && dialogueKeyPressed && dashCooldownTimer <= 0 {
+	if movement_player_state != MovementPlayerState.DASHING && dialogueKeyPressed && dashCooldownTimer <= 0 && global.game_data.abilities.dash && !player_dialogue_key_interacting {
 		movement_player_state = MovementPlayerState.DASHING;
 		dashTimer = dashDuration;
 		dashDirection = face;
 	} else if movement_player_state != MovementPlayerState.DASHING {
-		if !onGround && yspd > 0 && global.game_data.abilities.glide && actionKey {
+		if !onGround && yspd > 0 && global.game_data.abilities.glide && actionKey && global.game_data.abilities.glide {
 	        movement_player_state = MovementPlayerState.GLIDING;
 		} else {
 			movement_player_state = MovementPlayerState.CLASSIC;
@@ -345,6 +374,13 @@ function player_update_vertical_physics() {
 	}
 }
 
+function player_check_hazards() {
+	if place_meeting(x, y, oSpike) {
+		main_player_state = MainPlayerState.DEAD;
+		respawn_timer = respawn_delay;
+	}
+}
+
 function player_update_sprite() {
 	if movement_player_state == MovementPlayerState.CLASSIC {
 		if onGround {
@@ -391,6 +427,7 @@ enum MainPlayerState {
     NORMAL,
 	DIALOGUE,
 	CUTSCENE,
+	TRANSITION,
 	DEAD
 }
 
@@ -420,8 +457,7 @@ actionKeyBuffered = false;
 actionKeyBufferTimer = 0;
 
 // Tileset
-var _tile_layer_id = layer_get_id("CollisionTiles");
-tileset_id = layer_tilemap_get_id(_tile_layer_id);
+init_tileset();
 
 // Moving
 moveDir = 0;
@@ -473,3 +509,14 @@ jumpAnimationTakeoffTimer = 0;
 jumpAnimationLandingTimer = 0;
 jumpAnimationTakeoffDuration = 3;
 jumpAnimationLandingDuration = 3;
+
+// Death
+respawn_timer = 0;
+respawn_delay = 60;
+
+// Other
+player_dialogue_key_interacting = false;
+
+// Checkpoint at load
+x = global.game_data.checkpoint.x_pos;
+y = global.game_data.checkpoint.y_pos;

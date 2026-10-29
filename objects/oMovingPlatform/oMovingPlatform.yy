@@ -9,8 +9,8 @@
   "name":"oMovingPlatform",
   "overriddenProperties":[],
   "parent":{
-    "name":"Environment",
-    "path":"folders/Environment.yy",
+    "name":"Platforms",
+    "path":"folders/Environment/Platforms.yy",
   },
   "parentObjectId":{
     "name":"oSemiSolid",
