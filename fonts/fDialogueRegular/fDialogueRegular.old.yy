@@ -119,8 +119,8 @@
   "maintainGms1Font":false,
   "name":"fDialogueRegular",
   "parent":{
-    "name":"Fonts",
-    "path":"folders/Meta/Fonts.yy",
+    "name":"Dialogue",
+    "path":"folders/Meta/Fonts/Dialogue.yy",
   },
   "pointRounding":0,
   "ranges":[

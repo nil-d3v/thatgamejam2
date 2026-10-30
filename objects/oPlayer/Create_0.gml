@@ -6,7 +6,7 @@ if instance_number(oPlayer) > 1 {
 
 // Functions
 function update_status() {
-	jumpMax = global.game_data.abilities.double_jump ? 2 : 1;
+	jumpMax = oGameController.save_file.abilities.double_jump ? 2 : 1;
 }
 
 function get_inputs() {
@@ -60,6 +60,10 @@ function set_on_ground(_val) {
 	}
 }
 
+function place_meeting_ground(_x, _y) {
+	return place_meeting(_x, _y, tileset_id) || place_meeting(_x, _y, oBreakableBlock);
+}
+
 function is_on_semisolid() {
 	var on_platform = collision_rectangle(bbox_left, bbox_bottom + 1, bbox_right, bbox_bottom + 1, oSemiSolid, false, true);
 	if (!on_platform) {
@@ -103,12 +107,12 @@ function start_subarea_transition() {
 // Player Updating
 function player_update_movement() {
 	dashCooldownTimer--;
-	if movement_player_state != MovementPlayerState.DASHING && dialogueKeyPressed && dashCooldownTimer <= 0 && global.game_data.abilities.dash && !player_dialogue_key_interacting {
+	if movement_player_state != MovementPlayerState.DASHING && dialogueKeyPressed && dashCooldownTimer <= 0 && oGameController.save_file.abilities.dash && !player_dialogue_key_interacting {
 		movement_player_state = MovementPlayerState.DASHING;
-		dashTimer = dashDuration;
+		dashTimer = dashDelay;
 		dashDirection = face;
 	} else if movement_player_state != MovementPlayerState.DASHING {
-		if !onGround && yspd > 0 && global.game_data.abilities.glide && actionKey && global.game_data.abilities.glide {
+		if !onGround && yspd > 0 && actionKey && oGameController.save_file.abilities.glide {
 	        movement_player_state = MovementPlayerState.GLIDING;
 		} else {
 			movement_player_state = MovementPlayerState.CLASSIC;
@@ -122,12 +126,12 @@ function player_update_platform_movement() {
 	}
 	var _platform = groundPlatform;
 	move_x(_platform.xspd);
-	if (_platform.yspd < 0 && place_meeting(x, y + _platform.yspd, tileset_id)) {
+	if _platform.yspd < 0 && place_meeting_ground(x, y + _platform.yspd) {
 		var _subpixel = 0.25;
-		while (place_meeting(x, y + _platform.yspd, tileset_id)) {
+		while place_meeting_ground(x, y + _platform.yspd) {
 			y += _subpixel;
 		}
-		while (place_meeting(x, y, tileset_id)) {
+		while place_meeting_ground(x, y) {
 			y += _subpixel;
 		}
 		y = round(y);
@@ -148,7 +152,7 @@ function player_update_horizontal_control() {
 		case MovementPlayerState.CLASSIC:
 		case MovementPlayerState.GLIDING:
 			var _currentMoveSpeed = 0;
-			if onGround && global.game_data.abilities.sprint && actionKey {
+			if onGround && actionKey && oGameController.save_file.abilities.sprint {
 				_currentMoveSpeed = sprintSpeed;
 			} else {
 				_currentMoveSpeed = moveSpeed;
@@ -168,11 +172,6 @@ function player_update_horizontal_control() {
 
 		case MovementPlayerState.DASHING:
 			dashTimer--;
-			xspd = approach(xspd, dashDirection * dashSpeed, 0.3);
-			if dashTimer <= 0 {
-				movement_player_state = MovementPlayerState.CLASSIC;
-				dashCooldownTimer = dashCooldownDuration;
-			}
 		break;
 	}
 }
@@ -257,7 +256,7 @@ function move_x(_amount) {
 	while (_remaining > 0.0001) {
 		var _step = min(_step_size, _remaining);
 		var _move = _dir * _step;
-		if (place_meeting(x + _move, y, tileset_id)) {
+		if movement_player_state == MovementPlayerState.DASHING ? place_meeting(x + _move, y, tileset_id) : place_meeting_ground(x + _move, y) {
 			_success = false;
 			break;
 		}
@@ -278,7 +277,7 @@ function move_y(_amount) {
 		var _move = _dir * _step;
 		var _old_bottom = bbox_bottom;
 		var _next_y = y + _move;
-		if (place_meeting(x, _next_y, tileset_id)) {
+		if place_meeting_ground(x, _next_y) {
 			_success = false;
 			break;
 		}
@@ -310,13 +309,41 @@ function move_y(_amount) {
 }
 
 function player_update_horizontal_physics() {
-	if !move_x(xspdInt) {
-		xspd = 0;
-		xspdFrac = 0;
-		if movement_player_state == MovementPlayerState.DASHING {
-			movement_player_state = MovementPlayerState.CLASSIC;
-			dashCooldownTimer = dashCooldownDuration;
-		}
+	switch (movement_player_state) {
+		case MovementPlayerState.CLASSIC:
+		case MovementPlayerState.GLIDING:
+			if !move_x(xspdInt) {
+				xspd = 0;
+				xspdFrac = 0;
+			}
+		break;
+
+		case MovementPlayerState.DASHING:
+			if dashTimer <= 0 {
+				var _distance_left = dashDistance;
+				while _distance_left > 0 {
+					// Move
+					var _movement_distance = min(bbox_right - bbox_left, _distance_left);
+					_distance_left -= _movement_distance;
+					var _movement_success = move_x(_movement_distance * dashDirection);
+					// Destroy blocks
+					var _block_list = ds_list_create();
+					var _list_length = instance_place_list(x, y, oBreakableBlock, _block_list, false)
+					if _list_length != 0 {
+						for (i = 0; i < _list_length; i++) {
+							instance_destroy(_block_list[|i]);
+						}
+					}
+					// Stop at collision
+					if !_movement_success {
+						_distance_left = 0;
+					}
+				}
+				movement_player_state = MovementPlayerState.CLASSIC;
+				dashCooldownTimer = dashCooldownDuration;
+				dashAnimTimer = postDashAnimDuration;
+			}
+		break;
 	}
 }
 
@@ -354,7 +381,7 @@ function player_update_vertical_physics() {
         }
     }
     if yspd >= 0 {
-        if place_meeting(x, y + 1, tileset_id) {
+        if place_meeting_ground(x, y + 1) {
             groundPlatform = noone;
             set_on_ground(true);
         } else {
@@ -418,7 +445,12 @@ function player_update_sprite() {
 		sprite_index = sPlayerGlide;
 	} else {
 		sprite_index = sPlayerDash;
-		image_index = ceil((1 - (dashTimer / dashDuration)) * sprite_get_number(sPlayerDash) - 1)
+		image_index = 0;
+	}
+	if dashAnimTimer > 0 {
+		sprite_index = sPlayerDash;
+		image_index = dashAnimTimer > postDashAnimFadeOut ? 1 : 2;
+		dashAnimTimer--;
 	}
 }
 
@@ -497,10 +529,13 @@ coyoteJumpFrames = 5;
 coyoteJumpTimer = 0;
 
 // Dash
-dashSpeed = 5;
+dashDistance = 112;
 dashDirection = 0;
-dashDuration = 30;
+dashDelay = 12;
 dashTimer = 0;
+dashAnimTimer = 0;
+postDashAnimDuration = 10;
+postDashAnimFadeOut = 5;
 dashCooldownDuration = 60;
 dashCooldownTimer = 0;
 
@@ -518,5 +553,5 @@ respawn_delay = 60;
 player_dialogue_key_interacting = false;
 
 // Checkpoint at load
-x = global.game_data.checkpoint.x_pos;
-y = global.game_data.checkpoint.y_pos;
+x = oGameController.save_file.checkpoint.x_pos;
+y = oGameController.save_file.checkpoint.y_pos;

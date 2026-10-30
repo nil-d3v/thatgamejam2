@@ -26,8 +26,8 @@ switch (main_player_state) {
 	case MainPlayerState.TRANSITION:
 		if instance_exists(oRoomTransition) {
 			if oRoomTransition.rmtr_steps == floor(oRoomTransition.rmtr_speed / 2) {
-				x = global.game_data.checkpoint.x_pos;
-				y = global.game_data.checkpoint.y_pos;
+				x = oGameController.save_file.checkpoint.x_pos;
+				y = oGameController.save_file.checkpoint.y_pos;
 			}
 			if oRoomTransition.rmtr_steps > oRoomTransition.rmtr_speed {
 				main_player_state = MainPlayerState.NORMAL;
@@ -42,8 +42,8 @@ switch (main_player_state) {
 	case MainPlayerState.DEAD:
 		respawn_timer--;
 		if respawn_timer <= 0 {
-			x = global.game_data.checkpoint.x_pos;
-			y = global.game_data.checkpoint.y_pos;
+			x = oGameController.save_file.checkpoint.x_pos;
+			y = oGameController.save_file.checkpoint.y_pos;
 			main_player_state = MainPlayerState.NORMAL;
 		}
 	break;
