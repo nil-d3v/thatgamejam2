@@ -15,9 +15,12 @@ base_save_file = {
 		glide : true
     },
 	checkpoint : {
-		x_pos : 320,
-		y_pos : 596,
-		checkpoint_room : MainRoom
+	//	x_pos : 320,
+	//	y_pos : 596,
+	//	checkpoint_room : MainRoom
+		x_pos : 700,
+		y_pos : 420,
+		checkpoint_room : JunglePart
     }
 };
 
@@ -51,8 +54,5 @@ function SetSlotIndex(_slotIndex) {
     Load();
 }
 
+Wipe();
 Load();
-
-show_debug_message("Controller initialized!");
-show_debug_message(variable_instance_exists(id, "save_file"));
-show_debug_message(is_struct(save_file));

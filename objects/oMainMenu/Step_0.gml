@@ -1,3 +1,7 @@
+if instance_exists(oOptionsMenu) {
+	exit;
+}
+
 // Positions
 GUI_MULT = display_get_gui_width() / camera_get_view_width(view_camera[0]);
 
@@ -8,33 +12,44 @@ selection_rectangle_height = 50 * GUI_MULT;
 selection_rectangle_length_right = 192 * GUI_MULT;
 selection_rectangle_length_left = 8 * GUI_MULT;
 
+// Mouse Use Test
+if point_distance(device_mouse_y_to_gui(0), device_mouse_y_to_gui(0), mouse_xprevious, mouse_yprevious) > 1 || mouse_check_button_pressed(mb_left) {
+	last_used_input = "mouse";
+}
+
 // Keyboard Input
 if keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S")) || gamepad_button_check_pressed(0, gp_padd) {
 	item_index = (item_index + 1) mod 3;
+	last_used_input = "keyboard";
 }
 
 if keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W")) || gamepad_button_check_pressed(0, gp_padu) {
 	item_index = (item_index - 1 + 3) mod 3;
+	last_used_input = "keyboard";
 }
 
-// Mouse Input
-//if point_distance(mouse_x, mouse_y, mouse_xprevious, mouse_yprevious) > 10 {
-    
-//}
+if last_used_input == "mouse" {
+	for (i = 0; i < 3; i++) {
+		if point_in_rectangle(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), options_x[i] - selection_rectangle_length_left, options_y[i] - selection_rectangle_height / 2, options_x[i] + selection_rectangle_length_right, options_y[i] + selection_rectangle_height / 2) {
+			item_index = i;
+		}
+	}
+}
+
 
 // Selection
-if keyboard_check_pressed(vk_space) || mouse_check_button_pressed(mb_left) {
+if keyboard_check_pressed(vk_space) || keyboard_check_pressed(vk_enter) || mouse_check_button_pressed(mb_left) {
 	switch (item_index) {
 		case 0:
-			room_transition(MainRoom, tr_spotlight, 60);
+			room_transition(JunglePart, tr_spotlight, 60);
 		break;
 		
 		case 1:
-			// Open save files menu
+			//
 		break;
 		
 		case 2:
-			// Open options menu
+			instance_create_layer(0, 0, "Instances", oOptionsMenu);
 		break;
 	}
 }

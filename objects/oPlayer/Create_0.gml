@@ -518,9 +518,9 @@ jumpHoldTimer = 0;
 
 // Jump Values
 jumpHoldFrames[0] = 12;
-jspd[0] = -3.4;
+jspd[0] = -3.3;
 jumpHoldFrames[1] = 1;
-jspd[1] = -4;
+jspd[1] = -3.8;
 
 // Coyote Time
 coyoteHangFrames = 2;

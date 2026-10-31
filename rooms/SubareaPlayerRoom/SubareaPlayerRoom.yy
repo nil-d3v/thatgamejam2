@@ -12,11 +12,10 @@
   "isDnd":false,
   "layers":[
     {"$GMRTileLayer":"","%Name":"CollisionTiles","depth":-150,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"CollisionTiles","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":34,"SerialiseWidth":60,"TileCompressedData":[
-          -391,1,4,84,60,48,36,-3,24,4,36,48,60,84,-46,1,-16,-2147483648,-43,1,-19,-2147483648,-39,1,-23,-2147483648,
-          -36,1,-25,-2147483648,-34,1,-27,-2147483648,-32,1,-29,-2147483648,-30,1,-31,-2147483648,-28,1,-33,-2147483648,
-          -27,1,-33,-2147483648,-26,1,-34,-2147483648,1,0,-25,1,-35,-2147483648,-24,1,-36,-2147483648,1,0,-5,1,
-          -18,36,-36,-2147483648,1,0,-5,1,-55,-2147483648,-5,1,-55,-2147483648,-5,1,-55,-2147483648,-5,1,-55,-2147483648,
-          -5,1,-55,-2147483648,-5,1,-55,-2147483648,-5,1,-55,-2147483648,-5,1,-55,61,-365,1,
+          -372,1,-32,0,-28,1,-32,0,-28,1,-32,0,-28,1,-32,0,-28,1,-32,0,-28,1,-32,0,-28,1,-32,0,-28,1,-32,0,-28,
+          1,-32,0,-28,1,-32,0,-28,1,-32,0,-28,1,-32,0,-28,1,-32,0,-28,1,-32,0,-28,1,-5,0,-27,-2147483648,-28,1,
+          -43,-2147483648,-17,1,-43,-2147483648,-17,1,-43,-2147483648,-17,1,-43,0,-17,1,-43,0,-17,1,-43,0,-17,
+          1,-43,0,-17,1,-43,0,-17,1,-43,49,-245,1,
         ],"TileDataFormat":1,},"tilesetId":{"name":"tCollisionTiles","path":"tilesets/tCollisionTiles/tCollisionTiles.yy",},"userdefinedDepth":false,"visible":false,"x":0,"y":0,},
     {"$GMRAssetLayer":"","%Name":"AssetOverlay","assets":[
         {"$GMRSpriteGraphic":"v1","%Name":"graphic_1476E29D","animationSpeed":1.0,"colour":4294967295,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_1476E29D","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"sSubareaPlayerRoomOverlay","path":"sprites/sSubareaPlayerRoomOverlay/sSubareaPlayerRoomOverlay.yy",},"x":0.0,"y":0.0,},

@@ -1,3 +1,3 @@
 transition_room = MainRoom;
-transition_x = 400;
-transition_y = 596;
+transition_x = 585;
+transition_y = 482;

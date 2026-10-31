@@ -109,6 +109,8 @@
     {"name":"inst_2DB0F31F","path":"rooms/MainRoom/MainRoom.yy",},
     {"name":"inst_7540AACC","path":"rooms/MainRoom/MainRoom.yy",},
     {"name":"inst_34CCB3D9","path":"rooms/MainRoom/MainRoom.yy",},
+    {"name":"inst_2ED6F1","path":"rooms/MainRoom/MainRoom.yy",},
+    {"name":"inst_63440E9F","path":"rooms/MainRoom/MainRoom.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -232,6 +234,8 @@
         {"$GMRInstance":"v4","%Name":"inst_2DB0F31F","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2DB0F31F","objectId":{"name":"oClickableDoor","path":"objects/oClickableDoor/oClickableDoor.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":4.8125,"scaleY":5.2,"x":400.0,"y":596.0,},
         {"$GMRInstance":"v4","%Name":"inst_7540AACC","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7540AACC","objectId":{"name":"oClickableDoor","path":"objects/oClickableDoor/oClickableDoor.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":2.0625,"scaleY":2.7,"x":511.0,"y":180.0,},
         {"$GMRInstance":"v4","%Name":"inst_34CCB3D9","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_34CCB3D9","objectId":{"name":"oClickableDoor","path":"objects/oClickableDoor/oClickableDoor.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.45,"scaleY":1.9921873,"x":187.0,"y":494.0,},
+        {"$GMRInstance":"v4","%Name":"inst_2ED6F1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2ED6F1","objectId":{"name":"oMovingPlatformAurelia","path":"objects/oMovingPlatformAurelia/oMovingPlatformAurelia.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":200.0,"y":332.0,},
+        {"$GMRInstance":"v4","%Name":"inst_63440E9F","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_63440E9F","objectId":{"name":"oClickableDoor","path":"objects/oClickableDoor/oClickableDoor.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.725,"scaleY":2.0625,"x":585.0,"y":482.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRAssetLayer":"","%Name":"AssetMain","assets":[
         {"$GMRSpriteGraphic":"v1","%Name":"graphic_5DC7D732","animationSpeed":1.0,"colour":4294967295,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_5DC7D732","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"sAureliaMain","path":"sprites/sAureliaMain/sAureliaMain.yy",},"x":0.0,"y":0.0,},

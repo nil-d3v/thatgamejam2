@@ -1,9 +1,10 @@
 // Menu
 item_index = 0;
 
-// Mouse
-mouse_xprevious = mouse_x;
-mouse_yprevious = mouse_y;
+// Input
+last_used_input = "keyboard"; // keyboard / mouse
+mouse_xprevious = device_mouse_y_to_gui(0);
+mouse_yprevious = device_mouse_y_to_gui(0);
 
 // Check for an existing save file
 non_empty_save_file = noone;

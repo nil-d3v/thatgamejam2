@@ -17,3 +17,7 @@ function normal_to_gui_y(_y) {
 	var _ypercent = (_y - camera_get_view_y(view_camera[0])) / camera_get_view_height(view_camera[0]);
 	return _ypercent * display_get_gui_height();
 }
+
+function ease_in_out_cubic(_n) {
+	return _n < 0.5 ? 4 * _n * _n * _n : 1 - power(-2 * _n + 2, 3) / 2;
+}

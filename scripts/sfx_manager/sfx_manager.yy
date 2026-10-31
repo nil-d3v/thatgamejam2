@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"sfx_manager",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"sfx_manager",
+  "parent":{
+    "name":"Sound",
+    "path":"folders/Meta/Sound.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
