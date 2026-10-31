@@ -1,7 +1,7 @@
 x_start = x;
 y_start = y;
 x_end = x;
-y_end = x;
+y_end = y;
 movement_duration = 0;
 movement_timer = movement_duration;
 movement_direction = 1;

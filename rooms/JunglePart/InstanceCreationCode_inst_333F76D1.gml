@@ -1,3 +1,3 @@
 x_end = x;
-y_end = y + 168;
-movement_duration = 0;
+y_end = y + 96;
+movement_duration = 120;
