@@ -1,3 +1,9 @@
+if room == SplashScreen || room == MainMenu {
+	instance_destroy();
+}
+
+if (global.game_paused) {exit;};
+
 get_inputs();
 update_status();
 
@@ -42,6 +48,14 @@ switch (main_player_state) {
 	case MainPlayerState.DEAD:
 		respawn_timer--;
 		if respawn_timer <= 0 {
+			// Restore all broken blocks
+			for (i = 0; i < instance_number(oBreakableBlock); i++) {
+				var _inst = instance_find(oBreakableBlock, i);
+				_inst.broken = false;
+				_inst.sprite_index = sBreakableBlockSolid;
+			}
+			
+			// Respawn
 			x = oGameController.save_file.checkpoint.x_pos;
 			y = oGameController.save_file.checkpoint.y_pos;
 			main_player_state = MainPlayerState.NORMAL;

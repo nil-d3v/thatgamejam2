@@ -1,7 +1,9 @@
 {
   "$GMObject":"",
   "%Name":"oBreakableBlock",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"oBreakableBlock",
   "overriddenProperties":[],
@@ -28,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sBreakableBlock",
-    "path":"sprites/sBreakableBlock/sBreakableBlock.yy",
+    "name":"sBreakableBlockSolid",
+    "path":"sprites/sBreakableBlockSolid/sBreakableBlockSolid.yy",
   },
   "spriteMaskId":null,
   "visible":true,

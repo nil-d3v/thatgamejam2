@@ -1,3 +1,5 @@
+if (global.game_paused) {exit;};
+
 if !transition_started {
 	if place_meeting(x, y, oPlayer) {
 		transition_started = true;

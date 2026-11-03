@@ -1,3 +1,5 @@
+if (global.game_paused) {exit;};
+
 if !dialogue_ongoing {
 	player_on_range = point_distance(oPlayer.x, oPlayer.y, x, y) <= range;
 	if player_on_range {

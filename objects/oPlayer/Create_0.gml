@@ -48,8 +48,8 @@ function set_on_ground(_val) {
 	if _val == true {
 		if !onGround {
 			jumpAnimationLandingTimer = jumpAnimationLandingDuration;
-			xscale = 1.5;
-			yscale = 0.5;
+			xscale = 1.2;
+			yscale = 0.8;
 		}
 		onGround = true;
 		coyoteHangTimer = coyoteHangFrames;
@@ -212,6 +212,8 @@ function player_update_vertical_control() {
 			if jumpCount <= 1 {
 				jumpAnimationTakeoffTimer = jumpAnimationTakeoffDuration;
 			}
+			xscale = 1.2;
+			yscale = 0.8;
 		}
 
 		if !jumpKey {
@@ -331,7 +333,8 @@ function player_update_horizontal_physics() {
 					var _list_length = instance_place_list(x, y, oBreakableBlock, _block_list, false)
 					if _list_length != 0 {
 						for (i = 0; i < _list_length; i++) {
-							instance_destroy(_block_list[|i]);
+							_block_list[|i].broken = true;
+							_block_list[|i].sprite_index = sBreakableBlockBroken;
 						}
 					}
 					// Stop at collision
@@ -452,6 +455,9 @@ function player_update_sprite() {
 		image_index = dashAnimTimer > postDashAnimFadeOut ? 1 : 2;
 		dashAnimTimer--;
 	}
+	
+	xscale = lerp(xscale, 1, 0.1) 
+	yscale = lerp(yscale, 1, 0.1)
 }
 
 // States
@@ -548,6 +554,10 @@ jumpAnimationLandingDuration = 3;
 // Death
 respawn_timer = 0;
 respawn_delay = 60;
+
+// Effects
+xscale = 1;
+yscale = 1;
 
 // Other
 player_dialogue_key_interacting = false;

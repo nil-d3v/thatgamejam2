@@ -6,6 +6,9 @@ if instance_number(oGameController) > 1 {
 // Resize Application Surface
 surface_resize(application_surface, 960, 540);
 
+// Pause
+global.game_paused = false;
+
 // Save Files
 base_save_file = {
 	abilities : {
@@ -15,13 +18,11 @@ base_save_file = {
 		glide : true
     },
 	checkpoint : {
-	//	x_pos : 320,
-	//	y_pos : 596,
-	//	checkpoint_room : MainRoom
-		x_pos : 700,
-		y_pos : 420,
-		checkpoint_room : JunglePart
-    }
+		x_pos : 320,
+		y_pos : 596,
+		checkpoint_room : MainRoom
+    },
+	stars : 0
 };
 
 save_slot_index = 1;

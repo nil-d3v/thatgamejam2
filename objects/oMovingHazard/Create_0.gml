@@ -14,5 +14,4 @@ function move() {
 	movement_timer--;
 	x = movement_direction > 0 ? x_start + (x_end - x_start) * ease_in_out_cubic(movement_timer / movement_duration) : x_end + (x_start - x_end) * ease_in_out_cubic(movement_timer / movement_duration);
 	y = movement_direction > 0 ? y_start + (y_end - y_start) * ease_in_out_cubic(movement_timer / movement_duration) : y_end + (y_start - y_end) * ease_in_out_cubic(movement_timer / movement_duration);
-
 }

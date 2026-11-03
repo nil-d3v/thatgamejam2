@@ -9,7 +9,7 @@ draw_set_alpha(1);
 draw_set_color(c_white);
 draw_set_valign(fa_middle);
 draw_set_font(fOptionsMenuTitle);
-draw_text(options_x[i], options_y[i], options_text[i]);
+draw_text(options_x[0], 50, "Options");
 draw_set_font(-1);
 draw_set_valign(fa_top);
 draw_set_color(c_white);
