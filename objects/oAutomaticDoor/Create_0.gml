@@ -1,5 +1,3 @@
-visible = false;
-
 transition_started = false;
 
 transition_room = noone;

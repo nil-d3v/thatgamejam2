@@ -111,6 +111,7 @@ function player_update_movement() {
 		movement_player_state = MovementPlayerState.DASHING;
 		dashTimer = dashDelay;
 		dashDirection = face;
+		dashChargeParticlesInitialized = false;
 	} else if movement_player_state != MovementPlayerState.DASHING {
 		if !onGround && yspd > 0 && actionKey && oGameController.save_file.abilities.glide {
 	        movement_player_state = MovementPlayerState.GLIDING;
@@ -322,6 +323,7 @@ function player_update_horizontal_physics() {
 
 		case MovementPlayerState.DASHING:
 			if dashTimer <= 0 {
+				var _start_x = x;
 				var _distance_left = dashDistance;
 				while _distance_left > 0 {
 					// Move
@@ -335,6 +337,8 @@ function player_update_horizontal_physics() {
 						for (i = 0; i < _list_length; i++) {
 							_block_list[|i].broken = true;
 							_block_list[|i].sprite_index = sBreakableBlockBroken;
+							_block_list[|i].mask_index = -1;
+							particle_emit_block_break(_block_list[|i].x, _block_list[|i].y)
 						}
 					}
 					// Stop at collision
@@ -345,6 +349,22 @@ function player_update_horizontal_physics() {
 				movement_player_state = MovementPlayerState.CLASSIC;
 				dashCooldownTimer = dashCooldownDuration;
 				dashAnimTimer = postDashAnimDuration;
+				// Afterimages
+				var _distance_moved = abs(x - _start_x);
+				var _min_distance_afterimages = 30;
+				if _distance_moved >= _min_distance_afterimages {
+					afterimages[0] = [_start_x, y, 0.6, 0.6];
+				}
+				if _distance_moved >= 2 * _min_distance_afterimages && _distance_moved < 3 * _min_distance_afterimages {
+					afterimages[1] = [_start_x + (x - _start_x) * (1 / 2), y, 0.4, 0.8];
+				} else if _distance_moved >= 3 * _min_distance_afterimages && _distance_moved < dashDistance {
+					afterimages[1] = [_start_x + (x - _start_x) * (1 / 3), y, 0.4, 0.8];
+					afterimages[2] = [_start_x + (x - _start_x) * (2 / 3), y, 0.1, 1.0];
+				} else if _distance_moved >= dashDistance {
+					afterimages[1] = [_start_x + (x - _start_x) * (1 / 4), y, 0.4, 1.0];
+					afterimages[2] = [_start_x + (x - _start_x) * (2 / 4), y, 0.2, 1.0];
+					afterimages[3] = [_start_x + (x - _start_x) * (3 / 4), y, 0.0, 1.0];
+				}
 			}
 		break;
 	}
@@ -544,6 +564,9 @@ postDashAnimDuration = 10;
 postDashAnimFadeOut = 5;
 dashCooldownDuration = 60;
 dashCooldownTimer = 0;
+dashChargeParticlesInitialized = false;
+dashChargeParticles = [];
+dashChargeParticleCount = 12;
 
 // Sprites
 jumpAnimationTakeoffTimer = 0;
@@ -558,6 +581,21 @@ respawn_delay = 60;
 // Effects
 xscale = 1;
 yscale = 1;
+
+// Afterimages
+afterimages = [];
+
+// Outline Shader
+u_outline_texel = shader_get_uniform(shaderDashOutline, "u_texel");
+u_outline_color = shader_get_uniform(shaderDashOutline, "u_outlineColor");
+u_outline_size = shader_get_uniform(shaderDashOutline, "u_outlineSize");
+u_outline_alpha = shader_get_uniform(shaderDashOutline, "u_outlineAlpha");
+
+// Dissolve Shader
+u_dissolve_texel = shader_get_uniform(shaderDissolve, "u_texel");
+u_dissolve_amount = shader_get_uniform(shaderDissolve, "u_dissolve");
+u_dissolve_scale = shader_get_uniform(shaderDissolve, "u_noiseScale");
+u_dissolve_color = shader_get_uniform(shaderDissolve, "u_imageColor");
 
 // Other
 player_dialogue_key_interacting = false;
