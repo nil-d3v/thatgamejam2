@@ -212,6 +212,9 @@ function player_update_vertical_control() {
 			set_on_ground(false);
 			if jumpCount <= 1 {
 				jumpAnimationTakeoffTimer = jumpAnimationTakeoffDuration;
+				particle_emit_first_jump(x, y - 12);
+			} else {
+				particle_emit_second_jump(x, y - 12);
 			}
 			xscale = 1.2;
 			yscale = 0.8;

@@ -222,8 +222,8 @@
   ],
   "name":"JunglePart",
   "parent":{
-    "name":"Rooms",
-    "path":"folders/Rooms.yy",
+    "name":"Designs",
+    "path":"folders/Rooms/Designs.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

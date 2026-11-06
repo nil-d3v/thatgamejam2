@@ -7,7 +7,6 @@
   "inheritLayers":false,
   "instanceCreationOrder":[
     {"name":"inst_5DDDD085_2_1","path":"rooms/TombPart/TombPart.yy",},
-    {"name":"inst_555CE8C8_1","path":"rooms/TombPart/TombPart.yy",},
     {"name":"inst_4BD32604","path":"rooms/TombPart/TombPart.yy",},
     {"name":"inst_2610ADA8","path":"rooms/TombPart/TombPart.yy",},
     {"name":"inst_4C4508C1","path":"rooms/TombPart/TombPart.yy",},
@@ -94,7 +93,6 @@
         ],"TileDataFormat":1,},"tilesetId":{"name":"tCollisionTiles","path":"tilesets/tCollisionTiles/tCollisionTiles.yy",},"userdefinedDepth":false,"visible":true,"x":0,"y":0,},
     {"$GMRInstanceLayer":"","%Name":"Instances","depth":100,"effectEnabled":true,"effectType":null,"gridX":8,"gridY":8,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"$GMRInstance":"v4","%Name":"inst_5DDDD085_2_1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_5DDDD085_2_1","objectId":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":0.0,},
-        {"$GMRInstance":"v4","%Name":"inst_555CE8C8_1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_555CE8C8_1","objectId":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":528.0,"y":56.0,},
         {"$GMRInstance":"v4","%Name":"inst_4BD32604","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4BD32604","objectId":{"name":"oPeriodicSpikes","path":"objects/oPeriodicSpikes/oPeriodicSpikes.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":12.0,"scaleY":1.0,"x":368.0,"y":392.0,},
         {"$GMRInstance":"v4","%Name":"inst_2610ADA8","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2610ADA8","objectId":{"name":"oSpike","path":"objects/oSpike/oSpike.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":148.0,"y":392.0,},
         {"$GMRInstance":"v4","%Name":"inst_4C4508C1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4C4508C1","objectId":{"name":"oSpike","path":"objects/oSpike/oSpike.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":156.0,"y":392.0,},
@@ -156,8 +154,8 @@
   ],
   "name":"TombPart",
   "parent":{
-    "name":"Rooms",
-    "path":"folders/Rooms.yy",
+    "name":"Designs",
+    "path":"folders/Rooms/Designs.yy",
   },
   "parentRoom":null,
   "physicsSettings":{
