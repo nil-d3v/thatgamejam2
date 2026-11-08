@@ -9,8 +9,8 @@
   "name":"oGameController",
   "overriddenProperties":[],
   "parent":{
-    "name":"thatgamejam2",
-    "path":"thatgamejam2.yyp",
+    "name":"Systems",
+    "path":"folders/Systems.yy",
   },
   "parentObjectId":null,
   "persistent":true,

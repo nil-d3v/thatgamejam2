@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"MayorHouse",
-    "path":"folders/Rooms/Subareas/MayorHouse.yy",
+    "path":"folders/Rooms/Subareas/AureliaSubareas/MayorHouse.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

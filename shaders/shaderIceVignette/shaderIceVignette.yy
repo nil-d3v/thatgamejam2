@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"shaderIceVignette",
+  "name":"shaderIceVignette",
+  "parent":{
+    "name":"Shaders",
+    "path":"folders/Meta/Shaders.yy",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}

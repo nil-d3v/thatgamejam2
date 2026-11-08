@@ -52,7 +52,7 @@ switch (main_player_state) {
 			for (i = 0; i < instance_number(oBreakableBlock); i++) {
 				var _inst = instance_find(oBreakableBlock, i);
 				_inst.broken = false;
-				_inst.sprite_index = sBreakableBlockSolid;
+				_inst.sprite_index = _inst.base_sprite;
 			}
 			
 			// Respawn
@@ -62,3 +62,5 @@ switch (main_player_state) {
 		}
 	break;
 }
+
+oGameController.save_file.stats.timer++;

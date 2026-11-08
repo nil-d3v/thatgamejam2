@@ -12,7 +12,7 @@ for (i = 0; i < array_length(afterimages); i++) {
 	shader_set_uniform_f(u_dissolve_texel, _texel_w, _texel_h);
 	shader_set_uniform_f(u_dissolve_scale, 2.0);
     shader_set_uniform_f(u_dissolve_amount, afterimages[i][2]);
-	shader_set_uniform_f(u_dissolve_color, 0.941, 0.898, 0.102, 1.0);
+	shader_set_uniform_f(u_dissolve_color, 1.0, 1.0, 1.0, 1.0);
 
     draw_sprite_ext(sPlayerDash, 0, afterimages[i][0], afterimages[i][1], 1, 1, 0, c_white, afterimages[i][3]);
 

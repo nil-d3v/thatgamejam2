@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"MainRoom",
-    "path":"folders/Rooms/MainRoom.yy",
+    "name":"Aurelia",
+    "path":"folders/Rooms/MainRooms/Aurelia.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

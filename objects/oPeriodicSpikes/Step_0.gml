@@ -6,11 +6,12 @@ if timer <= 0 {
 }
 
 if enabled {
-	image_index = 0;	
+	image_index = 0;
 } else {
-	if timer <= 15 {
-		image_index = 1;
-	} else {
-		image_index = 2;
-	}
+//	if timer <= 15 {
+//		image_index = 1;
+//	} else {
+//		image_index = 2;
+//	}
+	image_index = 1;
 }

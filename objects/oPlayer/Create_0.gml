@@ -60,8 +60,12 @@ function set_on_ground(_val) {
 	}
 }
 
+function place_meeting_solid(_x, _y) {
+	return place_meeting(_x, _y, tileset_id) || place_meeting(_x, _y, oSolid);
+}
+
 function place_meeting_ground(_x, _y) {
-	return place_meeting(_x, _y, tileset_id) || place_meeting(_x, _y, oBreakableBlock);
+	return place_meeting(_x, _y, tileset_id) || place_meeting(_x, _y, oSolid) || place_meeting(_x, _y, oBreakableBlock);
 }
 
 function is_on_semisolid() {
@@ -262,7 +266,7 @@ function move_x(_amount) {
 	while (_remaining > 0.0001) {
 		var _step = min(_step_size, _remaining);
 		var _move = _dir * _step;
-		if movement_player_state == MovementPlayerState.DASHING ? place_meeting(x + _move, y, tileset_id) : place_meeting_ground(x + _move, y) {
+		if movement_player_state == MovementPlayerState.DASHING ? place_meeting_solid(x + _move, y) : place_meeting_ground(x + _move, y) {
 			_success = false;
 			break;
 		}
@@ -428,9 +432,10 @@ function player_update_vertical_physics() {
 }
 
 function player_check_hazards() {
-	if place_meeting(x, y, oSpike) {
+	if place_meeting(x, y, oSpike) || place_meeting(x, y, oPeriodicSpikes) || place_meeting(x, y, oMovingHazard) || place_meeting(x, y, oHazardHitbox) {
 		main_player_state = MainPlayerState.DEAD;
 		respawn_timer = respawn_delay;
+		oGameController.save_file.stats.deaths++;
 	}
 }
 

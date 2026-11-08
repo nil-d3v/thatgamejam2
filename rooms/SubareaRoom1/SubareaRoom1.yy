@@ -32,7 +32,7 @@
   "name":"SubareaRoom1",
   "parent":{
     "name":"Room1",
-    "path":"folders/Rooms/Subareas/Room1.yy",
+    "path":"folders/Rooms/Subareas/AureliaSubareas/Room1.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

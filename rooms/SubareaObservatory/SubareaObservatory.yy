@@ -33,7 +33,7 @@
   "name":"SubareaObservatory",
   "parent":{
     "name":"Observatory",
-    "path":"folders/Rooms/Subareas/Observatory.yy",
+    "path":"folders/Rooms/Subareas/AureliaSubareas/Observatory.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

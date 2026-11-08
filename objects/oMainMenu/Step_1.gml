@@ -40,7 +40,7 @@ if last_used_input == "mouse" {
 if keyboard_check_pressed(vk_space) || keyboard_check_pressed(vk_enter) || mouse_check_button_pressed(mb_left) {
 	switch (item_index) {
 		case 0:
-			room_transition(MainRoom, tr_spotlight, 60);
+			room_transition(RoomAurelia, tr_spotlight, 60);
 		break;
 		
 		case 1:

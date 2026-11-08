@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"Room1",
-    "path":"folders/Rooms/Subareas/Room1.yy",
+    "path":"folders/Rooms/Subareas/AureliaSubareas/Room1.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

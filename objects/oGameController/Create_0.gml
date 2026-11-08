@@ -18,9 +18,13 @@ base_save_file = {
 		glide : true
     },
 	checkpoint : {
-		x_pos : 320,
+		x_pos : 2720,
 		y_pos : 596,
-		checkpoint_room : MainRoom
+		checkpoint_room : RoomAurelia
+    },
+	stats : {
+		deaths : 0,
+		timer : 0
     },
 	stars : 0
 };

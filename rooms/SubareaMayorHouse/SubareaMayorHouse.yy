@@ -34,7 +34,7 @@
   "name":"SubareaMayorHouse",
   "parent":{
     "name":"MayorHouse",
-    "path":"folders/Rooms/Subareas/MayorHouse.yy",
+    "path":"folders/Rooms/Subareas/AureliaSubareas/MayorHouse.yy",
   },
   "parentRoom":null,
   "physicsSettings":{
