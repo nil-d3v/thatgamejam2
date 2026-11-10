@@ -1,0 +1,1 @@
+draw_sprite(sMainMenuDeco, 0, 0, 0);

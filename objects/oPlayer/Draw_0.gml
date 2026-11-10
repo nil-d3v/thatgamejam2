@@ -1,3 +1,5 @@
+if (global.game_paused || room == SplashScreen || room == MainMenu || room == EndScreen) {exit;};
+
 // Afterimages
 for (i = 0; i < array_length(afterimages); i++) {
 	if afterimages[i][2] >= 1 || afterimages[i][3] <= 0 {
@@ -23,25 +25,30 @@ for (i = 0; i < array_length(afterimages); i++) {
 }
 
 // Draw Player
-var _player_alpha = (main_player_state == MainPlayerState.DEAD) ? clamp(respawn_timer / respawn_delay, 0, 1) : 1;
-if movement_player_state == MovementPlayerState.DASHING {
-	var _dash_progress = 1 - dashTimer / dashDelay;
-	var _texture = sprite_get_texture(sprite_index, 0);
-	var _outline_texel_w = texture_get_texel_width(_texture);
-	var _outline_texel_h = texture_get_texel_height(_texture);
-
-	shader_set(shaderDashOutline);
-
-	shader_set_uniform_f(u_outline_texel, _outline_texel_w, _outline_texel_h);
-	shader_set_uniform_f(u_outline_color, 0.35, 0.65, 1.0, 1.0);
-	shader_set_uniform_f(u_outline_size, 1.5);
-	shader_set_uniform_f(u_outline_alpha, _dash_progress);
-
-	draw_sprite_ext(sprite_index, image_index, x, y, face * xscale, yscale, image_angle, image_blend, _player_alpha);
-
+if main_player_state == MainPlayerState.DEAD {
+	shader_set(shaderWhiteFlash);
+	draw_sprite_ext(sprite_index, 0, x, y, face * xscale, yscale, image_angle, image_blend, image_alpha);
 	shader_reset();
 } else {
-	draw_sprite_ext(sprite_index, image_index, x, y, face * xscale, yscale, image_angle, image_blend, _player_alpha);
+	if movement_player_state == MovementPlayerState.DASHING {
+		var _dash_progress = 1 - dashTimer / dashDelay;
+		var _texture = sprite_get_texture(sprite_index, 0);
+		var _outline_texel_w = texture_get_texel_width(_texture);
+		var _outline_texel_h = texture_get_texel_height(_texture);
+
+		shader_set(shaderDashOutline);
+
+		shader_set_uniform_f(u_outline_texel, _outline_texel_w, _outline_texel_h);
+		shader_set_uniform_f(u_outline_color, 0.35, 0.65, 1.0, 1.0);
+		shader_set_uniform_f(u_outline_size, 1.5);
+		shader_set_uniform_f(u_outline_alpha, _dash_progress);
+
+		draw_sprite_ext(sprite_index, image_index, x, y, face * xscale, yscale, image_angle, image_blend, image_alpha);
+
+		shader_reset();
+	} else {
+		draw_sprite_ext(sprite_index, image_index, x, y, face * xscale, yscale, image_angle, image_blend, image_alpha);
+	}
 }
 
 // Dash Charge Particles

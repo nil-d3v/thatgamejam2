@@ -1,3 +1,5 @@
+draw_self();
+
 if !dialogue_ongoing {
 	if player_on_range {
 		if player_available {

@@ -39,7 +39,9 @@ function start_dialogue(_xpos, _ypos, _max_width, _style, _character_name, _text
 
 	dialogue_active = true;
 	
-	oPlayer.main_player_state = MainPlayerState.DIALOGUE;
+	if instance_exists(oPlayer) {
+		oPlayer.main_player_state = MainPlayerState.DIALOGUE;
+	}
 	
 	set_dialogue_dimensions();
 }

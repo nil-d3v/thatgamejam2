@@ -2,4 +2,4 @@ dialogue_ongoing = false;
 player_on_range = false;
 player_available = false;
 
-range = 112;
+range = 150;

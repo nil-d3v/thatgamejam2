@@ -4,5 +4,5 @@ player_available = false;
 
 range = 112;
 
-dialogue_done = false:
+dialogue_done = false;
 dialogue_timer = 0;

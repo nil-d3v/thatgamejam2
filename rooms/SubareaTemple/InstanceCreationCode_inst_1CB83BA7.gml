@@ -1,3 +1,3 @@
-transition_room = RoomAurelia;
-transition_x = 1960;
-transition_y = 672;
+transition_room = RoomLeftOutskirts;
+transition_x = 268;
+transition_y = 677;

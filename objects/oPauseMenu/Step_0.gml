@@ -13,7 +13,7 @@ selection_rectangle_length_right = 192 * GUI_MULT;
 selection_rectangle_length_left = 8 * GUI_MULT;
 
 // Mouse Use Test
-if point_distance(device_mouse_y_to_gui(0), device_mouse_y_to_gui(0), mouse_xprevious, mouse_yprevious) > 1 || mouse_check_button_pressed(mb_left) {
+if point_distance(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), mouse_xprevious, mouse_yprevious) > 1 || mouse_check_button_pressed(mb_left) {
 	last_used_input = "mouse";
 }
 
@@ -57,11 +57,12 @@ if keyboard_check_pressed(vk_space) || keyboard_check_pressed(vk_enter) || mouse
 		
 		case 3:
 			global.game_paused = false;
+			oGameController.Save();
 			room_transition(MainMenu, tr_spotlight, 60);
 		break;
 	}
 }
 
 // Mouse Previous Position Updating
-mouse_xprevious = device_mouse_y_to_gui(0);
+mouse_xprevious = device_mouse_x_to_gui(0);
 mouse_yprevious = device_mouse_y_to_gui(0);

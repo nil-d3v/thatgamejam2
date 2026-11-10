@@ -9,3 +9,12 @@ if room != SplashScreen && room != MainMenu {
 		}
 	}
 }
+
+if keyboard_check_pressed(ord("R")) {
+	oPlayer.main_player_state = MainPlayerState.DEAD;
+	oPlayer.respawn_timer = 0;
+	if instance_exists(oPauseMenu) {
+		global.game_paused = false;
+		instance_destroy(oPauseMenu);
+	}
+}

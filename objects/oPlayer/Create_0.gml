@@ -348,6 +348,13 @@ function player_update_horizontal_physics() {
 							particle_emit_block_break(_block_list[|i].x, _block_list[|i].y)
 						}
 					}
+					ds_list_destroy(_block_list);
+					// Check automatic door
+					if place_meeting(x, y, oAutomaticDoor) {
+						var _inst = instance_place(x, y, oAutomaticDoor);
+						_inst.check();
+					}
+					
 					// Stop at collision
 					if !_movement_success {
 						_distance_left = 0;
@@ -436,7 +443,20 @@ function player_check_hazards() {
 		main_player_state = MainPlayerState.DEAD;
 		respawn_timer = respawn_delay;
 		oGameController.save_file.stats.deaths++;
+		particle_emit_player_death(x, y - 26)
 	}
+}
+
+function player_check_stars() {
+	if place_meeting(x, y, oStar) {
+		oGameController.save_file.star_carried = true;
+		var _inst = instance_place(x, y, oStar);
+		if _inst != noone {
+			particle_emit_star_collect(_inst.x, _inst.y);
+			star_carried = true;
+			instance_destroy(_inst);
+		}
+	}	
 }
 
 function player_update_sprite() {
@@ -584,7 +604,7 @@ jumpAnimationLandingDuration = 3;
 
 // Death
 respawn_timer = 0;
-respawn_delay = 60;
+respawn_delay = 90;
 
 // Effects
 xscale = 1;
@@ -607,6 +627,19 @@ u_dissolve_color = shader_get_uniform(shaderDissolve, "u_imageColor");
 
 // Other
 player_dialogue_key_interacting = false;
+dialogue_y_offset = 56;
+star_carried = false;
+
+// Dialogues
+dialogue_game_start_timer = 0;
+dialogue_exit_room_timer = 0;
+collected_valley_note = false;
+talked_to_mayor = false;
+talked_to_keeper = false;
+talked_to_child = true;
+talked_to_mother = false;
+talked_at_fall = false;
+talked_at_tomb_star = false;
 
 // Checkpoint at load
 x = oGameController.save_file.checkpoint.x_pos;

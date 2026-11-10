@@ -1,0 +1,1 @@
+transition_room = EndScreen;

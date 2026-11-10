@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"LeftOutskirts",
-    "path":"folders/Rooms/MainRooms/Aurelia/LeftOutskirts.yy",
+    "path":"folders/Rooms/MainRooms/Outskirts/LeftOutskirts.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

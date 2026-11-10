@@ -7,6 +7,7 @@ if checkpoint_x_pos == oGameController.save_file.checkpoint.x_pos && checkpoint_
 		oGameController.save_file.checkpoint.x_pos = checkpoint_x_pos;
 		oGameController.save_file.checkpoint.y_pos = checkpoint_y_pos;
 		oGameController.save_file.checkpoint.checkpoint_room = room;
+		oGameController.Save();
 		is_enabled = true;
 	} else {
 		is_enabled = false;

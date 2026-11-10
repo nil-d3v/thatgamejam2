@@ -12,21 +12,22 @@ global.game_paused = false;
 // Save Files
 base_save_file = {
 	abilities : {
-		double_jump : true,
-		sprint : true,
-		dash : true,
-		glide : true
+		double_jump : false,
+		sprint : false,
+		dash : false,
+		glide : false
     },
 	checkpoint : {
-		x_pos : 2720,
-		y_pos : 596,
-		checkpoint_room : RoomAurelia
+		x_pos : 225,
+		y_pos : 235,
+		checkpoint_room : SubareaPlayerRoom
     },
 	stats : {
 		deaths : 0,
 		timer : 0
     },
-	stars : 0
+	stars : 0,
+	star_carried : false
 };
 
 save_slot_index = 1;
@@ -49,8 +50,9 @@ function Load() {
 }
 
 function Wipe() {
-	var _save = ssave_get(SaveFile, save_slot_index);
+    var _save = ssave_get(SaveFile, save_slot_index);
     _save.reset("data");
+    Load();
 }
 
 function SetSlotIndex(_slotIndex) {
@@ -59,5 +61,11 @@ function SetSlotIndex(_slotIndex) {
     Load();
 }
 
+SetSlotIndex(1);
 Wipe();
+SetSlotIndex(2);
+Wipe();
+SetSlotIndex(3);
+Wipe();
+
 Load();

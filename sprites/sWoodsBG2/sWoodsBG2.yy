@@ -2,9 +2,9 @@
   "$GMSprite":"v2",
   "%Name":"sWoodsBG2",
   "bboxMode":0,
-  "bbox_bottom":447,
-  "bbox_left":64,
-  "bbox_right":912,
+  "bbox_bottom":454,
+  "bbox_left":66,
+  "bbox_right":903,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -12,14 +12,14 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"c1ded4b2-2516-4b42-9e5c-3ce31036aaae","name":"c1ded4b2-2516-4b42-9e5c-3ce31036aaae","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"f74db135-f562-48d1-a85e-c98155631bef","name":"f74db135-f562-48d1-a85e-c98155631bef","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
   "height":574,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"920c9739-c2fa-4714-89ea-a72d54314569","blendMode":0,"displayName":"default","isLocked":false,"name":"920c9739-c2fa-4714-89ea-a72d54314569","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"72711991-49be-4b95-90f2-c11077444a04","blendMode":0,"displayName":"default","isLocked":false,"name":"72711991-49be-4b95-90f2-c11077444a04","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"sWoodsBG2",
   "nineSlice":null,
@@ -69,8 +69,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"c1ded4b2-2516-4b42-9e5c-3ce31036aaae","path":"sprites/sWoodsBG2/sWoodsBG2.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"f65b979f-50e4-46e7-b9ec-04d9b445fe8f","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"f74db135-f562-48d1-a85e-c98155631bef","path":"sprites/sWoodsBG2/sWoodsBG2.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"c08524fd-083a-4da1-974a-7ac8cbbf6d0c","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

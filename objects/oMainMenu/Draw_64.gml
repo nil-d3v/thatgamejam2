@@ -1,7 +1,7 @@
 for (i = 0; i < 3; i++) {
 	if item_index == i {
 		draw_set_color(c_white);
-		draw_rectangle(options_x[i] - selection_rectangle_length_left, options_y[i] - selection_rectangle_height / 2, options_x[i] + selection_rectangle_length_right, options_y[i] + selection_rectangle_height / 2, false)
+		draw_roundrect_ext(options_x[i] - selection_rectangle_length_left, options_y[i] - selection_rectangle_height / 2, options_x[i] + selection_rectangle_length_right, options_y[i] + selection_rectangle_height / 2, selection_rectangle_rounding_radius, selection_rectangle_rounding_radius, false)
 		draw_set_color(c_black);
 		draw_set_valign(fa_middle);
 		draw_set_font(fMainMenuSelected);

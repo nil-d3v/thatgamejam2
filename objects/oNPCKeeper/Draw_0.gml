@@ -1,5 +1,7 @@
+draw_self();
+
 if !dialogue_ongoing {
-	if player_on_range {
+	if player_on_range && (oPlayer.talked_to_mayor || oPlayer.talked_to_mother) {
 		if player_available {
 			draw_sprite_ext(sInputPromptKeyE, 0, x, y, 0.5, 0.5, 0, c_white, 1);
 		} else {

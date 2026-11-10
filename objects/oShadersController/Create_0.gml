@@ -1,10 +1,13 @@
 // Duplicate Check
-if instance_number(oGameController) > 1 {
+if instance_number(oShadersController) > 1 {
 	instance_destroy();
 }
 
 // Setup
 application_surface_draw_enable(false);
+
+// Surfaces
+surf_copy = -1;
 
 // Shader Uniforms
 u_heat_time = shader_get_uniform(shaderHeatHaze, "u_time");

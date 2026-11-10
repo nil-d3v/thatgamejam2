@@ -12,7 +12,7 @@ variable_display_x = 300 * GUI_MULT;
 variable_arrows_distance = 12 * GUI_MULT;
 
 // Mouse Use Test
-if point_distance(device_mouse_y_to_gui(0), device_mouse_y_to_gui(0), mouse_xprevious, mouse_yprevious) > 1 || mouse_check_button_pressed(mb_left) {
+if point_distance(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), mouse_xprevious, mouse_yprevious) > 1 || mouse_check_button_pressed(mb_left) {
 	last_used_input = "mouse";
 }
 
@@ -68,5 +68,5 @@ if keyboard_check_pressed(vk_space) || keyboard_check_pressed(vk_enter) || mouse
 }
 
 // Mouse Previous Position Update
-mouse_xprevious = device_mouse_y_to_gui(0);
+mouse_xprevious = device_mouse_x_to_gui(0);
 mouse_yprevious = device_mouse_y_to_gui(0);

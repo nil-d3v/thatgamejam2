@@ -5,15 +5,16 @@ if instance_exists(oOptionsMenu) || instance_exists(oSaveFilesMenu) {
 // Positions
 GUI_MULT = display_get_gui_width() / camera_get_view_width(view_camera[0]);
 
-options_text = [non_empty_save_file == noone ? "Play" : "Continue with Save " + string(oGameController.save_slot_index), "Save Files", "Options"];
+options_text = [non_empty_save_file == noone ? "Play" : "Continue S" + string(oGameController.save_slot_index), "Save Files", "Options"];
 options_x = [24 * GUI_MULT, 24 * GUI_MULT, 24 * GUI_MULT];
 options_y = [75 * GUI_MULT, 135 * GUI_MULT, 195 * GUI_MULT];
 selection_rectangle_height = 50 * GUI_MULT;
-selection_rectangle_length_right = 192 * GUI_MULT;
-selection_rectangle_length_left = 8 * GUI_MULT;
+selection_rectangle_rounding_radius = 25 * GUI_MULT;
+selection_rectangle_length_right = 176 * GUI_MULT;
+selection_rectangle_length_left = 24 * GUI_MULT + selection_rectangle_rounding_radius;
 
 // Mouse Use Test
-if point_distance(device_mouse_y_to_gui(0), device_mouse_y_to_gui(0), mouse_xprevious, mouse_yprevious) > 1 || mouse_check_button_pressed(mb_left) {
+if point_distance(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), mouse_xprevious, mouse_yprevious) > 1 || mouse_check_button_pressed(mb_left) {
 	last_used_input = "mouse";
 }
 
@@ -40,7 +41,8 @@ if last_used_input == "mouse" {
 if keyboard_check_pressed(vk_space) || keyboard_check_pressed(vk_enter) || mouse_check_button_pressed(mb_left) {
 	switch (item_index) {
 		case 0:
-			room_transition(RoomAurelia, tr_spotlight, 60);
+			room_transition(oGameController.save_file.checkpoint.checkpoint_room, tr_spotlight, 60);
+			instance_create_layer(0, 0, "Instances", oPlayer);
 		break;
 		
 		case 1:
@@ -54,5 +56,5 @@ if keyboard_check_pressed(vk_space) || keyboard_check_pressed(vk_enter) || mouse
 }
 
 // Mouse Previous Position Updating
-mouse_xprevious = device_mouse_y_to_gui(0);
+mouse_xprevious = device_mouse_x_to_gui(0);
 mouse_yprevious = device_mouse_y_to_gui(0);

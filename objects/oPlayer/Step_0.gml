@@ -1,8 +1,4 @@
-if room == SplashScreen || room == MainMenu {
-	instance_destroy();
-}
-
-if (global.game_paused) {exit;};
+if (global.game_paused || room == SplashScreen || room == MainMenu || room == EndScreen) {exit;};
 
 get_inputs();
 update_status();
@@ -17,12 +13,12 @@ switch (main_player_state) {
 		player_update_horizontal_physics();
 		player_update_vertical_physics();
 		player_check_hazards();
+		player_check_stars();
 		player_update_sprite();
 	break;
 	
 	case MainPlayerState.DIALOGUE:
-		// dialogue logic
-		// not move
+		sprite_index = sPlayerIdle;
 	break;
 	
 	case MainPlayerState.CUTSCENE:
@@ -37,11 +33,9 @@ switch (main_player_state) {
 			}
 			if oRoomTransition.rmtr_steps > oRoomTransition.rmtr_speed {
 				main_player_state = MainPlayerState.NORMAL;
-				init_tileset();
 			}
 		} else {
 			main_player_state = MainPlayerState.NORMAL;
-			init_tileset();
 		}
 	break;
 	
@@ -64,3 +58,26 @@ switch (main_player_state) {
 }
 
 oGameController.save_file.stats.timer++;
+
+dialogue_game_start_timer++
+if dialogue_game_start_timer == 60 {
+	oDialogueManager.start_dialogue(normal_to_gui_x(x), normal_to_gui_y(y - dialogue_y_offset), 360, 0, "Me", ["The stars are *lost*", "I _need_ to find them!", "...What's this note doing here?", "It talks about using _A_ and _D_ to _move_ and _W_ to _jump_??", "*Weird*."], function() {});
+}
+if room == RoomAurelia {
+	dialogue_exit_room_timer++;
+}
+if dialogue_exit_room_timer == 60 {
+	oDialogueManager.start_dialogue(normal_to_gui_x(x), normal_to_gui_y(y - dialogue_y_offset), 360, 0, "Me", ["The same note talks about using _S_ to fall *down*", "What's with all of these _letters_?"], function() {});
+}
+if room == SubareaHouse6 && !collected_valley_note {
+	collected_valley_note = true;
+	oDialogueManager.start_dialogue(normal_to_gui_x(x), normal_to_gui_y(y - dialogue_y_offset), 360, 0, "Me", ["There we _go_! I *found* it."], function() {});
+}
+if room == RoomTomb && !talked_at_fall && place_meeting(x, y, oTrigger) {
+	oDialogueManager.start_dialogue(normal_to_gui_x(x), normal_to_gui_y(y - dialogue_y_offset), 360, 0, "Me", ["Aaaah. Am I _alive_?", "*Where* am _I_?", "There are so many *carvings* on the _walls_..."], function() {});
+	talked_at_fall = true;
+}
+if room == RoomTomb && !talked_at_tomb_star && place_meeting(x, y, oTrigger_1) {
+	oDialogueManager.start_dialogue(normal_to_gui_x(x), normal_to_gui_y(y - dialogue_y_offset), 360, 0, "Me", ["Now, how do _I_ get up...", "Looks like there is a path to _somewhere_.", "I *guess* I should _follow_ it"], function() {});
+	talked_at_tomb_star = true;
+}

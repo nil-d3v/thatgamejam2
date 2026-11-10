@@ -1,3 +1,5 @@
+if (global.game_paused) {exit;};
+
 if (dialogue_active) {
 	var _text = dialogue_text_array[dialogue_index];
 	var _text_x = dialogue_x + bubble_padding;

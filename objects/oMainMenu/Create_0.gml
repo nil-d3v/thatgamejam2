@@ -3,7 +3,7 @@ item_index = 0;
 
 // Input
 last_used_input = "keyboard"; // keyboard / mouse
-mouse_xprevious = device_mouse_y_to_gui(0);
+mouse_xprevious = device_mouse_x_to_gui(0);
 mouse_yprevious = device_mouse_y_to_gui(0);
 
 // Check for an existing save file
@@ -12,7 +12,7 @@ for (i = 1; i <= 3; i++) {
 	oGameController.SetSlotIndex(i);
 	oGameController.Load();
 	if oGameController.save_file != oGameController.base_save_file {
-		_non_empty_save_file = i;
+		non_empty_save_file = i;
 		break;
 	}
 }
@@ -20,5 +20,5 @@ for (i = 1; i <= 3; i++) {
 if non_empty_save_file == noone {
 	oGameController.SetSlotIndex(1);
 } else {
-	oGameController.SetSlotIndex(_non_empty_save_file);
+	oGameController.SetSlotIndex(non_empty_save_file);
 }

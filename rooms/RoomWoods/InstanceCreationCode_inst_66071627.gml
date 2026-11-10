@@ -1,2 +1,2 @@
 enabled_time = 30;
-disabled_time = 60;
+disabled_time = 90;

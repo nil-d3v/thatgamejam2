@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"particles_definitions",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"particles_definitions",
+  "parent":{
+    "name":"Particles",
+    "path":"folders/Meta/Particles.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

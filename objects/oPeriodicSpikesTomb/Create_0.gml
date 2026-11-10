@@ -1,3 +1,5 @@
+base_sprite_index = sprite_index;
+
 enabled = true;
 timer = 0;
 

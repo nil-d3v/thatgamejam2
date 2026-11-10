@@ -8,6 +8,21 @@ function approach(_value, _target, _amount) {
 	return _target;
 }
 
+function format_time(frames) {
+    var total_seconds = frames / 60;
+
+    var minutes = floor(total_seconds / 60);
+    var seconds = floor(frac(total_seconds / 60) * 60);
+
+    var min_str = string(minutes);
+    var sec_str = string(seconds);
+
+    if (minutes < 10) min_str = "0" + min_str;
+    if (seconds < 10) sec_str = "0" + sec_str;
+
+    return min_str + ":" + sec_str;
+}
+
 function normal_to_gui_x(_x) {
 	var _xpercent = (_x - camera_get_view_x(view_camera[0])) / camera_get_view_width(view_camera[0]);
 	return _xpercent * display_get_gui_width();

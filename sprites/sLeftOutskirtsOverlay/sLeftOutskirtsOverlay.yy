@@ -5,7 +5,7 @@
   "bbox_bottom":346,
   "bbox_left":285,
   "bbox_right":367,
-  "bbox_top":275,
+  "bbox_top":266,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
@@ -26,7 +26,7 @@
   "origin":0,
   "parent":{
     "name":"LeftOutskirts",
-    "path":"folders/Rooms/MainRooms/Aurelia/LeftOutskirts.yy",
+    "path":"folders/Rooms/MainRooms/Outskirts/LeftOutskirts.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

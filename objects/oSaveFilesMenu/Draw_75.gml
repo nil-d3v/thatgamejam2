@@ -40,7 +40,7 @@ for (i = 0; i < 3; i++) {
 	draw_set_color(c_white);
 	draw_set_valign(fa_middle);
 	draw_set_font(fSaveFilesMenuProgressInfo);
-	draw_text(options_x[1], files_y[i], oGameController.save_file == oGameController.base_save_file ? "Empty" : string(oGameController.save_file.stars) + " Stars");
+	draw_text(options_x[1], files_y[i], (slot_stars[i] == 0 && slot_timer[i] == 0) ? "Empty" : string(slot_stars[i]) + " Stars");
 	draw_set_font(-1);
 	draw_set_valign(fa_top);
 	draw_set_color(c_white);
