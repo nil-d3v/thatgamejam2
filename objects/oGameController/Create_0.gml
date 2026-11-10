@@ -12,15 +12,18 @@ global.game_paused = false;
 // Save Files
 base_save_file = {
 	abilities : {
-		double_jump : false,
-		sprint : false,
-		dash : false,
-		glide : false
+		double_jump : true,
+		sprint : true,
+		dash : true,
+		glide : true
     },
 	checkpoint : {
-		x_pos : 225,
-		y_pos : 235,
-		checkpoint_room : SubareaPlayerRoom
+		//x_pos : 225,
+		//y_pos : 235,
+		//checkpoint_room : SubareaPlayerRoom
+		x_pos : 60,
+		y_pos : 220,
+		checkpoint_room : RoomLink
     },
 	stats : {
 		deaths : 0,

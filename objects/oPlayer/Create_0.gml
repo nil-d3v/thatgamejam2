@@ -50,6 +50,7 @@ function set_on_ground(_val) {
 			jumpAnimationLandingTimer = jumpAnimationLandingDuration;
 			xscale = 1.2;
 			yscale = 0.8;
+			play_sfx(zLand);
 		}
 		onGround = true;
 		coyoteHangTimer = coyoteHangFrames;
@@ -116,6 +117,8 @@ function player_update_movement() {
 		dashTimer = dashDelay;
 		dashDirection = face;
 		dashChargeParticlesInitialized = false;
+		play_sfx(zDash);
+		oCamera.shake(3, 0.25);
 	} else if movement_player_state != MovementPlayerState.DASHING {
 		if !onGround && yspd > 0 && actionKey && oGameController.save_file.abilities.glide {
 	        movement_player_state = MovementPlayerState.GLIDING;
@@ -222,6 +225,7 @@ function player_update_vertical_control() {
 			}
 			xscale = 1.2;
 			yscale = 0.8;
+			play_sfx(zJump);
 		}
 
 		if !jumpKey {
@@ -444,6 +448,8 @@ function player_check_hazards() {
 		respawn_timer = respawn_delay;
 		oGameController.save_file.stats.deaths++;
 		oCamera.shake(5, 0.5);
+		play_sfx(zDeath1);
+		play_sfx(zDeath2);
 		particle_emit_player_death(x, y - 26);
 	}
 }
@@ -456,6 +462,7 @@ function player_check_stars() {
 			particle_emit_star_collect(_inst.x, _inst.y);
 			star_carried = true;
 			instance_destroy(_inst);
+			play_sfx(zStarCollect);
 		}
 	}	
 }

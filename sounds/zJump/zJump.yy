@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.4640136,
+  "duration":1.8240136,
   "exportDir":"",
   "name":"zJump",
   "parent":{

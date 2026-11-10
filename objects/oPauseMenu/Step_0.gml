@@ -3,7 +3,7 @@ if instance_exists(oOptionsMenu) {
 }
 
 // Positions
-GUI_MULT = display_get_gui_width() / camera_get_view_width(view_camera[0]);
+GUI_MULT = display_get_gui_width() / 480;
 
 options_text = ["Resume", "Restart", "Options", "Main Menu"];
 options_x = [24 * GUI_MULT, 24 * GUI_MULT, 24 * GUI_MULT, 24 * GUI_MULT];

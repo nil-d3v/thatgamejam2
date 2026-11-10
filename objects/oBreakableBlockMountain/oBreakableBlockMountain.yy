@@ -11,7 +11,10 @@
     "name":"BreakableBlockEnvs",
     "path":"folders/Environment/BreakableBlock/BreakableBlockEnvs.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"oBreakableBlock",
+    "path":"objects/oBreakableBlock/oBreakableBlock.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

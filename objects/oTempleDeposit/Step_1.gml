@@ -23,6 +23,9 @@ if !star_given && oGameController.save_file.star_carried && place_meeting(x, y, 
 	star_timer = 0;
 
 	star_active = true;
+	
+	play_sfx(zStarCollect);
+	oCamera.shake(2.5, 0.3);
 }
 
 
@@ -110,6 +113,7 @@ if (star_active) {
             star_phase = 4;
             star_timer = 0;
 			particle_emit_star_collect(star_x, star_y);
+			oCamera.shake(4, 0.5);
         }
     }
 

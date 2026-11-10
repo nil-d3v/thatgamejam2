@@ -11,7 +11,10 @@
     "name":"SemisolidEnvs",
     "path":"folders/Environment/Platforms/SemisolidEnvs.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"oSemiSolid",
+    "path":"objects/oSemiSolid/oSemiSolid.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
