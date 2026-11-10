@@ -18,12 +18,9 @@ base_save_file = {
 		glide : false
     },
 	checkpoint : {
-		//x_pos : 225,
-		//y_pos : 235,
-		//checkpoint_room : SubareaPlayerRoom
-		x_pos : 60,
-		y_pos : 424,
-		checkpoint_room : RoomWoods
+		x_pos : 225,
+		y_pos : 235,
+		checkpoint_room : SubareaPlayerRoom
     },
 	stats : {
 		deaths : 0,
