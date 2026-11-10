@@ -11,6 +11,7 @@
     {"name":"inst_38C59C50","path":"rooms/RoomDunes/RoomDunes.yy",},
     {"name":"inst_265F3FD0","path":"rooms/RoomDunes/RoomDunes.yy",},
     {"name":"inst_2CAF8B8A","path":"rooms/RoomDunes/RoomDunes.yy",},
+    {"name":"inst_4761DBB0","path":"rooms/RoomDunes/RoomDunes.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -26,6 +27,7 @@
         {"$GMRInstance":"v4","%Name":"inst_38C59C50","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_38C59C50","objectId":{"name":"oSolid","path":"objects/oSolid/oSolid.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":34.0,"x":-8.0,"y":0.0,},
         {"$GMRInstance":"v4","%Name":"inst_265F3FD0","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_265F3FD0","objectId":{"name":"oSolid","path":"objects/oSolid/oSolid.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":4.0,"scaleY":14.125,"x":480.0,"y":159.0,},
         {"$GMRInstance":"v4","%Name":"inst_2CAF8B8A","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2CAF8B8A","objectId":{"name":"oAutomaticDoor","path":"objects/oAutomaticDoor/oAutomaticDoor.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":0.5,"scaleY":9.9375,"x":508.0,"y":159.0,},
+        {"$GMRInstance":"v4","%Name":"inst_4761DBB0","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4761DBB0","objectId":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":0.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRAssetLayer":"","%Name":"AssetMain","assets":[
         {"$GMRSpriteGraphic":"v1","%Name":"graphic_21A7FDEC","animationSpeed":1.0,"colour":4294967295,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_21A7FDEC","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"sDunesMain","path":"sprites/sDunesMain/sDunesMain.yy",},"x":0.0,"y":0.0,},

@@ -61,6 +61,7 @@
     {"name":"inst_4C12CE19","path":"rooms/RoomTomb/RoomTomb.yy",},
     {"name":"inst_987B06B","path":"rooms/RoomTomb/RoomTomb.yy",},
     {"name":"inst_A43F9F0","path":"rooms/RoomTomb/RoomTomb.yy",},
+    {"name":"inst_2274B7C8","path":"rooms/RoomTomb/RoomTomb.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -131,6 +132,7 @@
         {"$GMRInstance":"v4","%Name":"inst_4C12CE19","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_4C12CE19","objectId":{"name":"oStar","path":"objects/oStar/oStar.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":416.0,"y":608.0,},
         {"$GMRInstance":"v4","%Name":"inst_987B06B","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_987B06B","objectId":{"name":"oTrigger","path":"objects/oTrigger/oTrigger.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":29.0,"scaleY":1.0,"x":320.0,"y":94.0,},
         {"$GMRInstance":"v4","%Name":"inst_A43F9F0","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_A43F9F0","objectId":{"name":"oTrigger_1","path":"objects/oTrigger_1/oTrigger_1.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":9.0,"x":456.0,"y":568.0,},
+        {"$GMRInstance":"v4","%Name":"inst_2274B7C8","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2274B7C8","objectId":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":0.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRAssetLayer":"","%Name":"AssetMain","assets":[
         {"$GMRSpriteGraphic":"v1","%Name":"graphic_239C4AD","animationSpeed":1.0,"colour":4294967295,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_239C4AD","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"sTombMain","path":"sprites/sTombMain/sTombMain.yy",},"x":0.0,"y":0.0,},
