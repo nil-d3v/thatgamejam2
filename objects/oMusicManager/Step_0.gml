@@ -1,5 +1,26 @@
-// music playing logic
-
+if room == RoomAurelia {
+	play_music(musicAurelia, musicAurelia, false, 1);
+} else if room == RoomLeftOutskirts || room == RoomRightOutskirts {
+	play_music(musicOutskirts, musicOutskirts, false, 1);
+} else if room == RoomWoods {
+	play_music(musicWoods, musicWoods, false, 1);
+} else if room == RoomDunes {
+	play_music(musicDunes, musicDunes, false, 1);
+} else if room == RoomTomb {
+	play_music(musicTomb, musicTomb, false, 1);
+} else if room == RoomLink {
+	play_music(musicLink, musicLink, false, 1);
+} else if room == RoomValley {
+	play_music(musicValley, musicValley, false, 1);
+} else if room == RoomMountain {
+	play_music(musicMountain, musicMountain, false, 1);
+} else if room == SubareaTemple {
+	play_music(musicTemple, musicTemple, false, 1);
+} else if room == EndScreen {
+	play_music(musicEndScreen, musicEndScreen, false, 1);
+} else if room == MainMenu || room == SplashScreen {
+	play_music(musicEndScreen, musicEndScreen, false, 1);
+}
 
 if !loop_started && music != -1 {
 	if audio_is_playing(music) {
