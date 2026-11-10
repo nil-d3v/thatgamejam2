@@ -116,7 +116,6 @@
     {"name":"inst_62B761F2","path":"rooms/RoomAurelia/RoomAurelia.yy",},
     {"name":"inst_7BA623ED","path":"rooms/RoomAurelia/RoomAurelia.yy",},
     {"name":"inst_2E0A922F","path":"rooms/RoomAurelia/RoomAurelia.yy",},
-    {"name":"inst_7B74FA68","path":"rooms/RoomAurelia/RoomAurelia.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -249,7 +248,6 @@
         {"$GMRInstance":"v4","%Name":"inst_62B761F2","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_62B761F2","objectId":{"name":"oAutomaticDoor","path":"objects/oAutomaticDoor/oAutomaticDoor.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":36.75001,"x":832.0,"y":596.0002,},
         {"$GMRInstance":"v4","%Name":"inst_7BA623ED","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7BA623ED","objectId":{"name":"oSolid","path":"objects/oSolid/oSolid.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":5.0,"scaleY":1.0,"x":800.0,"y":596.0,},
         {"$GMRInstance":"v4","%Name":"inst_2E0A922F","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2E0A922F","objectId":{"name":"oSolid","path":"objects/oSolid/oSolid.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":5.0,"scaleY":1.0,"x":800.0,"y":0.0,},
-        {"$GMRInstance":"v4","%Name":"inst_7B74FA68","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7B74FA68","objectId":{"name":"oStar","path":"objects/oStar/oStar.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":253.0,"y":568.0,},
       ],"layers":[],"name":"Instances","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRAssetLayer":"","%Name":"AssetMain","assets":[
         {"$GMRSpriteGraphic":"v1","%Name":"graphic_5DC7D732","animationSpeed":1.0,"colour":4294967295,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_5DC7D732","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"spriteId":{"name":"sAureliaMain","path":"sprites/sAureliaMain/sAureliaMain.yy",},"x":0.0,"y":0.0,},

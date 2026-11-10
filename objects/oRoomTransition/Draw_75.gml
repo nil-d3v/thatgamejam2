@@ -186,27 +186,39 @@ switch (rmtr_transition) {
 		draw_triangle(rmtr_left+(_trdw*2),-1,rmtr_left+(_trdw*2),_trdh+1,rmtr_left+(_trdw*2.5),-1,0);
 	break;
 	
-	case tr_spotlight:
-		var rmtr_max_radius = max(_trdw,_trdh)*1.05;
-		var rmtr_radius = 0;
-		if (rmtr_steps<=rmtr_half) {
-			rmtr_radius = rmtr_max_radius-((rmtr_steps/rmtr_half)*rmtr_max_radius);
-		} else {
-			rmtr_radius = ((rmtr_steps-rmtr_half)/rmtr_half)*rmtr_max_radius;
-		}
-		if !(surface_exists(rmtr_surface)) {
-			rmtr_surface = surface_create(_trdw,_trdh);	
-		}
-		surface_set_target(rmtr_surface);
-		draw_clear_alpha(c_black,0);
+	case tr_spotlight: // wrong name right_growing_circles or smth
 		draw_set_color(c_black);
-		draw_rectangle(-1,-1,_trdw+1,_trdh+1,0);
-		gpu_set_blendmode(bm_subtract);
-		draw_set_color(c_white);
-		draw_circle(_trdw/2,_trdh/2,rmtr_radius,0);
-		gpu_set_blendmode(bm_normal);
-		surface_reset_target();
-		draw_surface(rmtr_surface,0,0);
+		var rmtr_bv = _trdw / 8;
+		var rmtr_pc = rmtr_steps/rmtr_half;
+		var rows = 9;
+		var columns = 16;
+		var row_offset = _trdh / rows;
+		var column_offset = _trdw / columns;
+		var max_size = min(column_offset, row_offset) * sqrt(2);
+		var overlap = 0.6;
+		if (rmtr_steps<=rmtr_half) {
+			for (i = 0; i < columns; i++) {
+			    for (j = 0; j < rows; j++) {
+					var _x = column_offset/2 + column_offset*i;
+					var _y = row_offset/2 + row_offset*j;
+					var _size = clamp( ((rmtr_steps / rmtr_half) - (i / columns) * overlap) / (1 - overlap), 0, 1) * max_size;
+					if _size >= 1 {
+						draw_circle(_x, _y, _size/2, false);
+					}
+				}
+			}
+		} else {
+			for (i = 0; i < columns; i++) {
+			    for (j = 0; j < rows; j++) {
+					var _x = column_offset/2 + column_offset*i;
+					var _y = row_offset/2 + row_offset*j;
+					var _size = clamp( ((1 - ((rmtr_steps - rmtr_half) / rmtr_half)) - ((columns - 1 - i) / columns) * overlap) / (1 - overlap), 0, 1) * max_size;
+					if _size >= 1 {
+						draw_circle(_x, _y, _size/2, false);
+					}
+				}
+			}
+		}
 	break;
 	
 	case tr_center_rectangle:

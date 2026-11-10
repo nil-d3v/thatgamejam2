@@ -443,7 +443,8 @@ function player_check_hazards() {
 		main_player_state = MainPlayerState.DEAD;
 		respawn_timer = respawn_delay;
 		oGameController.save_file.stats.deaths++;
-		particle_emit_player_death(x, y - 26)
+		oCamera.shake(3, 0.5);
+		particle_emit_player_death(x, y - 26);
 	}
 }
 
