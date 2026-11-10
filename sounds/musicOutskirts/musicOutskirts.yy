@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"musicOutskirts",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":3,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":212.97633,
+  "exportDir":"",
+  "name":"musicOutskirts",
+  "parent":{
+    "name":"Music",
+    "path":"folders/Meta/Sound/Music.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"musicOutskirts.mp3",
+  "volume":1.0,
+}

@@ -17,10 +17,11 @@ old_music_timer = [];
 fade_time = 500;
 crossfade_time = 1000;
 
-function play_music(_intro_music, _loop_music, _restart = false) {
+function play_music(_intro_music, _loop_music, _restart = false, _volume = 1) {
 	if current_music != _intro_music || current_loop_music != _loop_music || _restart || !audio_is_playing(music) {
 		current_music = _intro_music;
 		current_loop_music = _loop_music;
+		current_music_volume = _volume;
 		loop_started = false;
 
 		if audio_is_playing(music) {
@@ -36,7 +37,7 @@ function play_music(_intro_music, _loop_music, _restart = false) {
 		}
 
 		music = audio_play_sound(_intro_music, 0, false);
-		audio_sound_gain(music, global.music_volume, fade_time);
+		audio_sound_gain(music, global.music_volume * current_music_volume, fade_time);
 
 		loop_music = -1;
 	}
