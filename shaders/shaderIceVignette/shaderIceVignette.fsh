@@ -11,7 +11,7 @@ void main() {
     vec2 uv = v_vTexcoord;
 
     vec2 centered = uv - 0.5;
-    centered.x *= 480 / 270;
+    centered.x *= 480.0 / 270.0;
 
     float dist = length(centered);
 

@@ -19,7 +19,7 @@ if room == RoomAurelia {
 } else if room == EndScreen {
 	play_music(musicEndScreen, musicEndScreen, false, 1);
 } else if room == MainMenu || room == SplashScreen {
-	play_music(musicEndScreen, musicEndScreen, false, 1);
+	play_music(musicMenu, musicMenu, false, 1);
 } else if room == SubareaHouseMae || room == SubareaHouse1 || room == SubareaHouse2 || room == SubareaHouse3 || room == SubareaHouse4 || room == SubareaHouse5 || room == SubareaHouse6 || room == SubareaHouse7 || room == SubareaHouse8 || room == SubareaHouse9 {
 	play_music(musicValley, musicValley, false, 0.5);
 } else if room == SubareaMayorHouse || room == SubareaObservatory || room == SubareaPlayerRoom || room == SubareaRoom1 {

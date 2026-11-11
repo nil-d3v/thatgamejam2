@@ -3,7 +3,7 @@
   "%Name":"sMountainMain",
   "bboxMode":0,
   "bbox_bottom":1590,
-  "bbox_left":252,
+  "bbox_left":0,
   "bbox_right":1376,
   "bbox_top":239,
   "collisionKind":1,

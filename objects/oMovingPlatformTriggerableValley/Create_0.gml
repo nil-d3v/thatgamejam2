@@ -1,46 +1,89 @@
 x_start = x;
 y_start = y;
+
 x_end = x;
 y_end = 180;
+
 movement_duration = 300;
 comeback_duration = 120;
 wait_duration = 300;
+
 movement_timer = 0;
 comeback_timer = 0;
 wait_timer = 0;
-movement_direction = 1;
 
 xspd = 0;
 yspd = 0;
+
 platform_prev_x = x;
 platform_prev_y = y;
 
 triggered = false;
 
+movement_state = 0; // 0 : move out / 1 : wait / 2 : move back
+
 function move() {
-	movement_timer--;
-	if movement_timer <= 0 {
-		wait_timer = wait_duration;
-	}
-	wait_timer--;
-	if movement_timer <= 0 || wait_timer <= 0 {
-		comeback_timer = comeback_duration;
-		movement_direction *= -1;
-	}
-	comeback_timer--;
-	if movement_timer <= 0 || wait_timer <= 0 || comeback_timer <= 0 {
-		triggered = false;
-		movement_direction *= -1;
-	}
-	platform_prev_x = x;
-	platform_prev_y = y;
-	if movement_timer > 0 {
-		x = movement_direction > 0 ? x_start + (x_end - x_start) * ease_in_out_cubic(movement_timer / movement_duration) : x_end + (x_start - x_end) * ease_in_out_cubic(movement_timer / movement_duration);
-		y = movement_direction > 0 ? y_start + (y_end - y_start) * ease_in_out_cubic(movement_timer / movement_duration) : y_end + (y_start - y_end) * ease_in_out_cubic(movement_timer / movement_duration);
-	} else if comeback_timer > 0{
-		x = movement_direction > 0 ? x_start + (x_end - x_start) * ease_in_out_cubic(comeback_timer / movement_duration) : x_end + (x_start - x_end) * ease_in_out_cubic(comeback_timer / movement_duration);
-		y = movement_direction > 0 ? y_start + (y_end - y_start) * ease_in_out_cubic(comeback_timer / movement_duration) : y_end + (y_start - y_end) * ease_in_out_cubic(comeback_timer / movement_duration);
-	}
-	xspd = x - platform_prev_x;
-	yspd = y - platform_prev_y;
+    platform_prev_x = x;
+    platform_prev_y = y;
+
+    switch (movement_state) {
+
+        case 0:
+            movement_timer++;
+
+            var t = clamp(
+                movement_timer / movement_duration,
+                0, 1
+            );
+
+            var eased = ease_in_out_cubic(t);
+
+            x = lerp(x_start, x_end, eased);
+            y = lerp(y_start, y_end, eased);
+
+            if (movement_timer >= movement_duration) {
+                x = x_end;
+                y = y_end;
+
+                wait_timer = 0;
+                movement_state = 1;
+            }
+        break;
+
+        case 1:
+
+            wait_timer++;
+
+            if (wait_timer >= wait_duration) {
+                comeback_timer = 0;
+                movement_state = 2;
+            }
+
+        break;
+
+        case 2:
+            comeback_timer++;
+
+            var t = clamp(
+                comeback_timer / comeback_duration,
+                0, 1
+            );
+
+            var eased = ease_in_out_cubic(t);
+
+            x = lerp(x_end, x_start, eased);
+            y = lerp(y_end, y_start, eased);
+
+            if (comeback_timer >= comeback_duration) {
+                x = x_start;
+                y = y_start;
+
+                triggered = false;
+                movement_state = 0;
+            }
+        break;
+    }
+
+    xspd = x - platform_prev_x;
+    yspd = y - platform_prev_y;
 }

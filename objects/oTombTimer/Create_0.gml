@@ -1,3 +1,4 @@
 triggered = false;
-timer = 20 * 60;
+time_given = 30 * 60;
+timer = time_given;
 thorns_offset = 100;

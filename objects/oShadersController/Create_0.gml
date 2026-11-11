@@ -34,3 +34,10 @@ u_ice_radius = shader_get_uniform(shaderIceVignette, "u_radius");
 u_ice_softness = shader_get_uniform(shaderIceVignette, "u_softness");
 u_ice_color = shader_get_uniform(shaderIceVignette, "u_ice_color");
 u_ice_noise = shader_get_uniform(shaderIceVignette, "u_noise");
+
+// Ice Vignette
+show_debug_message("Ice Strength: " + string(u_ice_strength));
+show_debug_message("Ice Radius: " + string(u_ice_radius));
+show_debug_message("Ice Softness: " + string(u_ice_softness));
+show_debug_message("Ice Color: " + string(u_ice_color));
+show_debug_message("Ice Noise: " + string(u_ice_noise));

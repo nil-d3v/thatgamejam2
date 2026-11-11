@@ -5,21 +5,21 @@
   "bbox_bottom":596,
   "bbox_left":0,
   "bbox_right":768,
-  "bbox_top":0,
+  "bbox_top":33,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"a429ec3d-3e7e-4cfe-b333-7e3a57ac96d0","name":"a429ec3d-3e7e-4cfe-b333-7e3a57ac96d0","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"b642a75d-622d-4e01-88c6-8547ba33178a","name":"b642a75d-622d-4e01-88c6-8547ba33178a","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
   "height":720,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"9cacb583-63de-478d-aa13-312464d2ded3","blendMode":0,"displayName":"default","isLocked":false,"name":"9cacb583-63de-478d-aa13-312464d2ded3","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"a859ca97-02a8-4173-ac51-f0930344ed9b","blendMode":0,"displayName":"default","isLocked":false,"name":"a859ca97-02a8-4173-ac51-f0930344ed9b","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"sAureliaMain",
   "nineSlice":null,
@@ -69,8 +69,8 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"a429ec3d-3e7e-4cfe-b333-7e3a57ac96d0","path":"sprites/sAureliaMain/sAureliaMain.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"2d511c85-d935-4ca2-b6f5-777dac2f165b","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"b642a75d-622d-4e01-88c6-8547ba33178a","path":"sprites/sAureliaMain/sAureliaMain.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"9b89dbc4-6682-4f8d-946c-d52d3fe56f1f","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,

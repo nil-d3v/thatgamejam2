@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.5892518,
+  "duration":1.5945351,
   "exportDir":"",
   "name":"zDeath2",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"zDeath2.wav",
-  "volume":1.0,
+  "soundFile":"zDeath2.mp3",
+  "volume":0.8,
 }

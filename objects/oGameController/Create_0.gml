@@ -13,7 +13,7 @@ global.game_paused = false;
 base_save_file = {
 	abilities : {
 		double_jump : false,
-		sprint : true,
+		sprint : false,
 		dash : false,
 		glide : false
     },
@@ -34,7 +34,8 @@ base_save_file = {
 		star5 : false
     },
 	stars : 0,
-	star_carried : false
+	star_carried : false,
+	intro_dialogue_done : false
 };
 
 save_slot_index = 1;
@@ -69,11 +70,12 @@ function SetSlotIndex(_slotIndex) {
     Load();
 }
 
-SetSlotIndex(1);
-Wipe();
-SetSlotIndex(2);
-Wipe();
-SetSlotIndex(3);
-Wipe();
+// Debug
+//SetSlotIndex(1);
+//Wipe();
+//SetSlotIndex(2);
+//Wipe();
+//SetSlotIndex(3);
+//Wipe();
 
 Load();

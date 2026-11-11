@@ -174,9 +174,11 @@ if (star_active) {
 			
 						oDialogueManager.start_dialogue(normal_to_gui_x(oPlayer.x), normal_to_gui_y(oPlayer.y - oPlayer.dialogue_y_offset), 220, 0, "Me", ["That was a _long_ *ride*...", "I wish for... _Glide_! "], function() {
 							star_growth = true;
-							oDialogueManager.start_dialogue(normal_to_gui_x(oPlayer.x), normal_to_gui_y(oPlayer.y - oPlayer.dialogue_y_offset), 220, 0, "Me", ["_Guard_, where's the *next* _star_?"], function() {
-								oDialogueManager.start_dialogue(normal_to_gui_x(oNPCTempleGuard.x), normal_to_gui_y(oNPCTempleGuard.y), 220, 0, "Guard", ["Go to the right of the outskirts...", "There you'll find an abandoned city.", "Meet the citizen there."], function() {
-									oDialogueManager.start_dialogue(normal_to_gui_x(oPlayer.x), normal_to_gui_y(oPlayer.y - oPlayer.dialogue_y_offset), 220, 0, "Me", ["_Citizen_? *Not* _citizens_?"], function() {});
+							oDialogueManager.start_dialogue(normal_to_gui_x(oNPCTempleGuard.x), normal_to_gui_y(oNPCTempleGuard.y), 220, 0, "Guard", ["To glide, press _SHIFT_ or _Z_...", "like sprint, but _mid-air_ *of course*."], function() {
+								oDialogueManager.start_dialogue(normal_to_gui_x(oPlayer.x), normal_to_gui_y(oPlayer.y - oPlayer.dialogue_y_offset), 220, 0, "Me", ["Thank _you_!", "_Guard_, where's the *next* _star_?"], function() {
+									oDialogueManager.start_dialogue(normal_to_gui_x(oNPCTempleGuard.x), normal_to_gui_y(oNPCTempleGuard.y), 220, 0, "Guard", ["Go to the right of the outskirts...", "There you'll find an abandoned city.", "Meet the citizen there."], function() {
+										oDialogueManager.start_dialogue(normal_to_gui_x(oPlayer.x), normal_to_gui_y(oPlayer.y - oPlayer.dialogue_y_offset), 220, 0, "Me", ["_Citizen_? *Not* _citizens_?"], function() {});
+									});
 								});
 							});
 						});
@@ -187,9 +189,13 @@ if (star_active) {
 			
 						oDialogueManager.start_dialogue(normal_to_gui_x(oPlayer.x), normal_to_gui_y(oPlayer.y - oPlayer.dialogue_y_offset), 220, 0, "Me", ["Just one more to go.", "I wish for... _Dash_! "], function() {
 							star_growth = true;
-							oDialogueManager.start_dialogue(normal_to_gui_x(oPlayer.x), normal_to_gui_y(oPlayer.y - oPlayer.dialogue_y_offset), 220, 0, "Me", ["Where's the *next* star, _guard_?"], function() {
-								oDialogueManager.start_dialogue(normal_to_gui_x(oNPCTempleGuard.x), normal_to_gui_y(oNPCTempleGuard.y), 220, 0, "Guard", ["Climb *aurora mountains*, located further into the _valleys_."], function() {
-									oDialogueManager.start_dialogue(normal_to_gui_x(oPlayer.x), normal_to_gui_y(oPlayer.y - oPlayer.dialogue_y_offset), 220, 0, "Me", ["Thank _you_!"], function() {});
+							oDialogueManager.start_dialogue(normal_to_gui_x(oPlayer.x), normal_to_gui_y(oPlayer.y - oPlayer.dialogue_y_offset), 220, 0, "Me", ["*How* to _Dash_?"], function() {
+								oDialogueManager.start_dialogue(normal_to_gui_x(oNPCTempleGuard.x), normal_to_gui_y(oNPCTempleGuard.y), 220, 0, "Guard", ["As *easy* as speaking...", "Just press _E_."], function() {
+									oDialogueManager.start_dialogue(normal_to_gui_x(oPlayer.x), normal_to_gui_y(oPlayer.y - oPlayer.dialogue_y_offset), 220, 0, "Me", ["Nice, thank *you*...", "And where's the *next* star, _guard_?"], function() {
+										oDialogueManager.start_dialogue(normal_to_gui_x(oNPCTempleGuard.x), normal_to_gui_y(oNPCTempleGuard.y), 220, 0, "Guard", ["Climb *aurora mountains*, located further into the _valleys_.", "*(dash through the last wall)*"], function() {
+											oDialogueManager.start_dialogue(normal_to_gui_x(oPlayer.x), normal_to_gui_y(oPlayer.y - oPlayer.dialogue_y_offset), 220, 0, "Me", ["Thank _you_!"], function() {});
+										});
+									});
 								});
 							});
 						});

@@ -1,6 +1,6 @@
 draw_self();
 
-if !dialogue_ongoing {
+if !dialogue_ongoing && talk_again_timer <= 0 {
 	if player_on_range {
 		if player_available {
 			draw_sprite_ext(sInputPromptKeyE, 0, x, y, 0.5, 0.5, 0, c_white, 1);

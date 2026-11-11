@@ -443,11 +443,11 @@ function player_update_vertical_physics() {
 }
 
 function player_check_hazards() {
-	if place_meeting(x, y, oSpike) || place_meeting(x, y, oPeriodicSpikes) || place_meeting(x, y, oMovingHazard) || place_meeting(x, y, oHazardHitbox) {
+	if place_meeting(x, y, oSpike) || place_meeting(x, y, oPeriodicSpikes) || place_meeting(x, y, oMovingHazard) || place_meeting(x, y, oHazardHitbox) || place_meeting(x, y, oTombClosingThornsLeft) || place_meeting(x, y, oTombClosingThornsRight) {
 		main_player_state = MainPlayerState.DEAD;
 		respawn_timer = respawn_delay;
 		oGameController.save_file.stats.deaths++;
-		oCamera.shake(5, 0.5);
+		oCamera.shake(8, 0.5);
 		play_sfx(zDeath1);
 		play_sfx(zDeath2);
 		particle_emit_player_death(x, y - 26);
@@ -477,6 +477,7 @@ function player_check_stars() {
 				break;
 			}
 			particle_emit_star_collect(_inst.x, _inst.y);
+			oCamera.shake(4, 0.3)
 			star_carried = true;
 			instance_destroy(_inst);
 			play_sfx(zStarCollect);
@@ -661,7 +662,7 @@ dialogue_exit_room_timer = 0;
 collected_valley_note = false;
 talked_to_mayor = false;
 talked_to_keeper = false;
-talked_to_child = true;
+talked_to_child = false;
 talked_to_mother = false;
 talked_at_fall = false;
 talked_at_tomb_star = false;

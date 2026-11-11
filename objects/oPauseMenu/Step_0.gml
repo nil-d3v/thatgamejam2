@@ -8,9 +8,11 @@ GUI_MULT = display_get_gui_width() / 480;
 options_text = ["Resume", "Restart", "Options", "Main Menu"];
 options_x = [24 * GUI_MULT, 24 * GUI_MULT, 24 * GUI_MULT, 24 * GUI_MULT];
 options_y = [75 * GUI_MULT, 120 * GUI_MULT, 165 * GUI_MULT, 210 * GUI_MULT];
-selection_rectangle_height = 40 * GUI_MULT;
-selection_rectangle_length_right = 192 * GUI_MULT;
-selection_rectangle_length_left = 8 * GUI_MULT;
+
+selection_rectangle_height = 46 * GUI_MULT;
+selection_rectangle_rounding_radius = 25 * GUI_MULT;
+selection_rectangle_length_right = 176 * GUI_MULT;
+selection_rectangle_length_left = 24 * GUI_MULT + selection_rectangle_rounding_radius;
 
 // Mouse Use Test
 if point_distance(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), mouse_xprevious, mouse_yprevious) > 1 || mouse_check_button_pressed(mb_left) {

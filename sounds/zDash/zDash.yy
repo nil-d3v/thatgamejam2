@@ -10,7 +10,7 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.3383447,
+  "duration":0.49199545,
   "exportDir":"",
   "name":"zDash",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"zDash.mp3",
-  "volume":0.8,
+  "soundFile":"zDash.wav",
+  "volume":1.0,
 }

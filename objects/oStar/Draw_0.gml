@@ -1,5 +1,5 @@
 if was_collected {
-	draw_sprite(oStar, 1, x, y);
+	draw_sprite(sprite_index, 1, x, y);
 } else {
 	gpu_set_blendmode(bm_add);
 
@@ -36,5 +36,5 @@ if was_collected {
 	gpu_set_blendmode(bm_normal);
 
 	// Original sprite
-	draw_sprite(oStar, 0, x, y);
+	draw_sprite(sprite_index, 0, x, y);
 }

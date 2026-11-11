@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"sAureliaDeco",
   "bboxMode":0,
-  "bbox_bottom":618,
+  "bbox_bottom":606,
   "bbox_left":0,
   "bbox_right":701,
   "bbox_top":24,

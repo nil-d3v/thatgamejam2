@@ -18,5 +18,3 @@ if keyboard_check_pressed(ord("R")) {
 		instance_destroy(oPauseMenu);
 	}
 }
-
-db(oGameController.save_slot_index);

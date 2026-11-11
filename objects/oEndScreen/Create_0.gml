@@ -27,7 +27,7 @@ times = [
 texts = [
 	"",
 	"Made by Tuvo and 0xNil",
-	"Time : " + string(oGameController.save_file.stats.timer) + "\nDeaths : " + string(oGameController.save_file.stats.deaths),
+	"Time : " + format_time(oGameController.save_file.stats.timer) + "\nDeaths : " + string(oGameController.save_file.stats.deaths),
 	"Music from pixabay.com\nand NoCopyrightSounds",
 	"SFX from freesound.org",
 	"Inspired from\nTethergeist and Celeste",

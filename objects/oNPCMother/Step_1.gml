@@ -1,6 +1,6 @@
 if (global.game_paused) {exit;};
 
-if !dialogue_ongoing {
+if !dialogue_ongoing && talk_again_timer <= 0 {
 	player_on_range = point_distance(oPlayer.x, oPlayer.y, x, y) <= range;
 	if player_on_range {
 		oPlayer.player_dialogue_key_interacting = true;
@@ -14,6 +14,7 @@ if !dialogue_ongoing {
 						oDialogueManager.start_dialogue(normal_to_gui_x(oPlayer.x), normal_to_gui_y(oPlayer.y - oPlayer.dialogue_y_offset), 360, 0, "Me", ["_Alright_!", "*Apparently* it was _easy_ enough"], function() {
 							dialogue_ongoing = false;
 							oPlayer.talked_to_mother = true;
+							talk_again_timer = talk_again_delay;
 						});
 					});
 				});
@@ -22,3 +23,5 @@ if !dialogue_ongoing {
 		}
 	}
 }
+
+talk_again_timer--;

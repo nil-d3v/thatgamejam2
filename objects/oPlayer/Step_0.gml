@@ -60,14 +60,14 @@ switch (main_player_state) {
 oGameController.save_file.stats.timer++;
 
 dialogue_game_start_timer++
-if dialogue_game_start_timer == 60 {
+if !oGameController.save_file.intro_dialogue_done && dialogue_game_start_timer == 60 {
 	oDialogueManager.start_dialogue(normal_to_gui_x(x), normal_to_gui_y(y - dialogue_y_offset), 360, 0, "Me", ["The stars are *lost*", "I _need_ to find them!", "...What's this note doing here?", "It talks about using _A_ and _D_ to _move_ and _W_ to _jump_??", "*Weird*."], function() {});
 }
-if room == RoomAurelia {
+if !oGameController.save_file.intro_dialogue_done && room == RoomAurelia {
 	dialogue_exit_room_timer++;
 }
-if dialogue_exit_room_timer == 60 {
-	oDialogueManager.start_dialogue(normal_to_gui_x(x), normal_to_gui_y(y - dialogue_y_offset), 360, 0, "Me", ["The same note talks about using _S_ to fall *down*", "What's with all of these _letters_?"], function() {});
+if !oGameController.save_file.intro_dialogue_done && dialogue_exit_room_timer == 60 {
+	oDialogueManager.start_dialogue(normal_to_gui_x(x), normal_to_gui_y(y - dialogue_y_offset), 360, 0, "Me", ["The same note talks about using _S_ to fall *down*", "What's with all of these _letters_?"], function() {oGameController.save_file.intro_dialogue_done = true;});
 }
 if room == SubareaHouse6 && !collected_valley_note {
 	collected_valley_note = true;
