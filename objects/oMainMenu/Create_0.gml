@@ -6,19 +6,19 @@ last_used_input = "keyboard"; // keyboard / mouse
 mouse_xprevious = device_mouse_x_to_gui(0);
 mouse_yprevious = device_mouse_y_to_gui(0);
 
-// Check for an existing save file
+// Check for existing save files
+var _active_slot = oGameController.save_slot_index;
+
 non_empty_save_file = noone;
-for (i = 1; i <= 3; i++) {
-	oGameController.SetSlotIndex(i);
-	oGameController.Load();
-	if oGameController.save_file != oGameController.base_save_file {
-		non_empty_save_file = i;
-		break;
-	}
+
+for (var i = 1; i <= 3; i++) {
+    oGameController.SetSlotIndex(i);
+
+    if (oGameController.save_file.stats.timer > 0) {
+        non_empty_save_file = i;
+        break;
+    }
 }
 
-if non_empty_save_file == noone {
-	oGameController.SetSlotIndex(1);
-} else {
-	oGameController.SetSlotIndex(non_empty_save_file);
-}
+// Restore previously active save slot
+oGameController.SetSlotIndex(_active_slot);

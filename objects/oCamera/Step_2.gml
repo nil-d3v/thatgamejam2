@@ -131,7 +131,7 @@ if pan_to_time > 0 {
 }
 
 // Smooth Zoom
-var zoom_lag = 30 * dt;
+var zoom_lag = 80 * dt;
 cam_scale += (target_scale - cam_scale) * zoom_lag;
 
 // Clamp Camera

@@ -1,36 +1,40 @@
-gpu_set_blendmode(bm_add);
+if was_collected {
+	draw_sprite(oStar, 1, x, y);
+} else {
+	gpu_set_blendmode(bm_add);
 
-// Large outer glow
-draw_sprite_ext(
-    sprite_index, image_index,
-    x, y,
-    1.8, 1.8,
-    image_angle,
-    c_white,
-    0.08
-);
+	// Large outer glow
+	draw_sprite_ext(
+	    sprite_index, 0,
+	    x, y,
+	    1.8, 1.8,
+	    image_angle,
+	    c_white,
+	    0.08
+	);
 
-// Medium glow
-draw_sprite_ext(
-    sprite_index, image_index,
-    x, y,
-    1.5, 1.5,
-    image_angle,
-    c_white,
-    0.18
-);
+	// Medium glow
+	draw_sprite_ext(
+	    sprite_index, 0,
+	    x, y,
+	    1.5, 1.5,
+	    image_angle,
+	    c_white,
+	    0.18
+	);
 
-// Inner glow
-draw_sprite_ext(
-    sprite_index, image_index,
-    x, y,
-    1.2, 1.2,
-    image_angle,
-    c_white,
-    0.3
-);
+	// Inner glow
+	draw_sprite_ext(
+	    sprite_index, 0,
+	    x, y,
+	    1.2, 1.2,
+	    image_angle,
+	    c_white,
+	    0.3
+	);
 
-gpu_set_blendmode(bm_normal);
+	gpu_set_blendmode(bm_normal);
 
-// Original sprite
-draw_self();
+	// Original sprite
+	draw_sprite(oStar, 0, x, y);
+}

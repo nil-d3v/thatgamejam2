@@ -10,7 +10,7 @@
   "compression":3,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":42.744015,
+  "duration":42.744965,
   "exportDir":"",
   "name":"musicDunes",
   "parent":{
@@ -22,5 +22,5 @@
   "resourceVersion":"2.0",
   "sampleRate":44100,
   "soundFile":"musicDunes.mp3",
-  "volume":1.0,
+  "volume":0.75,
 }

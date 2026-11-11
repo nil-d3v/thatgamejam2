@@ -10,7 +10,7 @@
   "compression":3,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":87.42139,
+  "duration":87.43299,
   "exportDir":"",
   "name":"musicWoods",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"musicWoods.wav",
+  "soundFile":"musicWoods.mp3",
   "volume":1.0,
 }

@@ -49,15 +49,15 @@ function scr_ambient_particle_spawn(_mode, _x, _y) {
             _p.vx = random_range(-0.3, 0.3);
             _p.vy = random_range(0.6, 1.5);
             _p.alpha = random_range(0.35, 0.85);
-            _p.max_life = 640;
+            _p.max_life = 800;
             break;
 
         case "moss":
             _p.size = random_range(1, 2);
             _p.vx = random_range(0.3, 0.8);
-            _p.vy = random_range(0.4, 1.0);
+            _p.vy = random_range(0.6, 1.0);
             _p.alpha = random_range(0.5, 1);
-            _p.max_life = irandom_range(150, 300);
+            _p.max_life = 800;
 
             _p.color = choose(
                 make_color_rgb(150, 255, 90),
@@ -71,7 +71,7 @@ function scr_ambient_particle_spawn(_mode, _x, _y) {
             _p.vx = random_range(-0.2, 0.2);
             _p.vy = random_range(-0.8, -0.3);
             _p.alpha = random_range(0.4, 0.8);
-            _p.max_life = irandom_range(100, 180);
+            _p.max_life = 800;
 
             _p.color = choose(
                 make_color_rgb(170, 100, 255),

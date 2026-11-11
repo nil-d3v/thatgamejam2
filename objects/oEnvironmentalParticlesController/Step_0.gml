@@ -21,7 +21,7 @@ var _cam_h = camera_get_view_height(cam);
 var _new_mode = "none";
 
 switch (room) {
-    case RoomAurelia:
+    case RoomMountain:
         _new_mode = "snow";
         break;
 

@@ -459,6 +459,23 @@ function player_check_stars() {
 		oGameController.save_file.star_carried = true;
 		var _inst = instance_place(x, y, oStar);
 		if _inst != noone {
+			switch (_inst.star_id) {
+				case 1:
+					oGameController.save_file.stars_collected.star1 = true;
+				break;
+				case 2:
+					oGameController.save_file.stars_collected.star2 = true;
+				break;
+				case 3:
+					oGameController.save_file.stars_collected.star3 = true;
+				break;
+				case 4:
+					oGameController.save_file.stars_collected.star4 = true;
+				break;
+				case 5:
+					oGameController.save_file.stars_collected.star5 = true;
+				break;
+			}
 			particle_emit_star_collect(_inst.x, _inst.y);
 			star_carried = true;
 			instance_destroy(_inst);

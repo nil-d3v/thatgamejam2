@@ -25,6 +25,9 @@ dialogue_index = 0;
 visible_chars = 0;
 text_speed = 0.5;
 
+text_sound_timer = 0;
+text_sound_interval = 15;
+
 function start_dialogue(_xpos, _ypos, _max_width, _style, _character_name, _text_array, _callback) {
 	dialogue_x = _xpos;
 	dialogue_y = _ypos;

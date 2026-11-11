@@ -10,7 +10,7 @@
   "compression":3,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":74.75093,
+  "duration":74.760994,
   "exportDir":"",
   "name":"musicLink",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"musicLink.wav",
+  "soundFile":"musicLink.mp3",
   "volume":1.0,
 }
